@@ -76,30 +76,6 @@ with DAG(
         mode="poke"        # Modo poke (revisar periódicamente)
     )
 
-
-
-    # ========== DESPLIEGUE API ==========
-    
-    # Preparar y configurar FastAPI
-    # setup_fastapi = PythonOperator(
-    #     task_id="setup_fastapi",
-    #     python_callable=start_fastapi_server,
-    # )
-    
-
-
-    # start_fastapi_server_bash = BashOperator(
-    #     task_id="start_fastapi_server",
-    #     bash_command=f"""
-    #     cd /opt/airflow/dags && 
-    #     nohup uvicorn fastapi_app:app --host 0.0.0.0 --port 8000 > fastapi.log 2>&1 &
-    #     echo $! > fastapi.pid
-    #     sleep 5
-    #     echo "FastAPI server started with PID: $(cat fastapi.pid)"
-    #     """,
-    
-
-    # )
     
 
 # Flujo de proceso
