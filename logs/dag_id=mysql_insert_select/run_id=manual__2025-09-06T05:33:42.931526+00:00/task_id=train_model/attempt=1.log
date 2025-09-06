@@ -1,0 +1,15 @@
+[2025-09-06T05:33:57.399+0000] {taskinstance.py:1125} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: mysql_insert_select.train_model manual__2025-09-06T05:33:42.931526+00:00 [queued]>
+[2025-09-06T05:33:57.416+0000] {taskinstance.py:1125} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: mysql_insert_select.train_model manual__2025-09-06T05:33:42.931526+00:00 [queued]>
+[2025-09-06T05:33:57.416+0000] {taskinstance.py:1331} INFO - Starting attempt 1 of 1
+[2025-09-06T05:33:57.437+0000] {taskinstance.py:1350} INFO - Executing <Task(PythonOperator): train_model> on 2025-09-06 05:33:42.931526+00:00
+[2025-09-06T05:33:57.449+0000] {standard_task_runner.py:57} INFO - Started process 1803 to run task
+[2025-09-06T05:33:57.461+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'mysql_insert_select', 'train_model', 'manual__2025-09-06T05:33:42.931526+00:00', '--job-id', '311', '--raw', '--subdir', 'DAGS_FOLDER/mysql_insert_select.py', '--cfg-path', '/tmp/tmpf3gbjovy']
+[2025-09-06T05:33:57.465+0000] {standard_task_runner.py:85} INFO - Job 311: Subtask train_model
+[2025-09-06T05:33:57.556+0000] {task_command.py:410} INFO - Running <TaskInstance: mysql_insert_select.train_model manual__2025-09-06T05:33:42.931526+00:00 [running]> on host 6faa580ba6cb
+[2025-09-06T05:33:57.711+0000] {taskinstance.py:1570} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='mysql_insert_select' AIRFLOW_CTX_TASK_ID='train_model' AIRFLOW_CTX_EXECUTION_DATE='2025-09-06T05:33:42.931526+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2025-09-06T05:33:42.931526+00:00'
+[2025-09-06T05:33:57.724+0000] {base.py:73} INFO - Using connection ID 'mysql_conn' for task execution.
+[2025-09-06T05:33:57.767+0000] {logging_mixin.py:149} INFO - Error: El objeto no es un modelo de scikit-learn válido.
+[2025-09-06T05:33:57.768+0000] {python.py:183} INFO - Done. Returned value was: None
+[2025-09-06T05:33:57.787+0000] {taskinstance.py:1373} INFO - Marking task as SUCCESS. dag_id=mysql_insert_select, task_id=train_model, execution_date=20250906T053342, start_date=20250906T053357, end_date=20250906T053357
+[2025-09-06T05:33:57.826+0000] {local_task_job_runner.py:232} INFO - Task exited with return code 0
+[2025-09-06T05:33:57.893+0000] {taskinstance.py:2674} INFO - 1 downstream tasks scheduled from follow-on schedule check

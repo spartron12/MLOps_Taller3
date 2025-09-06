@@ -1,0 +1,28 @@
+[2025-09-06T02:38:22.193+0000] {taskinstance.py:1125} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: mysql_insert_select.wait_for_model_file manual__2025-09-06T02:38:03.226135+00:00 [queued]>
+[2025-09-06T02:38:22.207+0000] {taskinstance.py:1125} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: mysql_insert_select.wait_for_model_file manual__2025-09-06T02:38:03.226135+00:00 [queued]>
+[2025-09-06T02:38:22.207+0000] {taskinstance.py:1331} INFO - Starting attempt 1 of 1
+[2025-09-06T02:38:22.226+0000] {taskinstance.py:1350} INFO - Executing <Task(FileSensor): wait_for_model_file> on 2025-09-06 02:38:03.226135+00:00
+[2025-09-06T02:38:22.239+0000] {standard_task_runner.py:57} INFO - Started process 643 to run task
+[2025-09-06T02:38:22.253+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'mysql_insert_select', 'wait_for_model_file', 'manual__2025-09-06T02:38:03.226135+00:00', '--job-id', '133', '--raw', '--subdir', 'DAGS_FOLDER/crea_tablas.py', '--cfg-path', '/tmp/tmp1r3j8t6m']
+[2025-09-06T02:38:22.262+0000] {standard_task_runner.py:85} INFO - Job 133: Subtask wait_for_model_file
+[2025-09-06T02:38:22.357+0000] {task_command.py:410} INFO - Running <TaskInstance: mysql_insert_select.wait_for_model_file manual__2025-09-06T02:38:03.226135+00:00 [running]> on host ded74915b8e2
+[2025-09-06T02:38:22.509+0000] {taskinstance.py:1570} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='mysql_insert_select' AIRFLOW_CTX_TASK_ID='wait_for_model_file' AIRFLOW_CTX_EXECUTION_DATE='2025-09-06T02:38:03.226135+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2025-09-06T02:38:03.226135+00:00'
+[2025-09-06T02:38:22.533+0000] {taskinstance.py:1847} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/sensors/base.py", line 225, in execute
+    raise e
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/sensors/base.py", line 212, in execute
+    poke_return = self.poke(context)
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/sensors/filesystem.py", line 61, in poke
+    hook = FSHook(self.fs_conn_id)
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/hooks/filesystem.py", line 38, in __init__
+    conn = self.get_connection(conn_id)
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/hooks/base.py", line 72, in get_connection
+    conn = Connection.get_connection_from_secrets(conn_id)
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/connection.py", line 434, in get_connection_from_secrets
+    raise AirflowNotFoundException(f"The conn_id `{conn_id}` isn't defined")
+airflow.exceptions.AirflowNotFoundException: The conn_id `fs_default` isn't defined
+[2025-09-06T02:38:22.539+0000] {taskinstance.py:1373} INFO - Marking task as FAILED. dag_id=mysql_insert_select, task_id=wait_for_model_file, execution_date=20250906T023803, start_date=20250906T023822, end_date=20250906T023822
+[2025-09-06T02:38:22.556+0000] {standard_task_runner.py:109} ERROR - Failed to execute job 133 for task wait_for_model_file (The conn_id `fs_default` isn't defined; 643)
+[2025-09-06T02:38:22.578+0000] {local_task_job_runner.py:232} INFO - Task exited with return code 1
+[2025-09-06T02:38:22.636+0000] {taskinstance.py:2674} INFO - 0 downstream tasks scheduled from follow-on schedule check

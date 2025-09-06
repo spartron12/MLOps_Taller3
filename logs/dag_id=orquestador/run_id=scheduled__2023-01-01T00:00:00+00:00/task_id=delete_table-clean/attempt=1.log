@@ -1,0 +1,21 @@
+[2025-09-06T06:59:21.896+0000] {taskinstance.py:1125} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: orquestador.delete_table-clean scheduled__2023-01-01T00:00:00+00:00 [queued]>
+[2025-09-06T06:59:21.922+0000] {taskinstance.py:1125} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: orquestador.delete_table-clean scheduled__2023-01-01T00:00:00+00:00 [queued]>
+[2025-09-06T06:59:21.924+0000] {taskinstance.py:1331} INFO - Starting attempt 1 of 1
+[2025-09-06T06:59:21.981+0000] {taskinstance.py:1350} INFO - Executing <Task(MySqlOperator): delete_table-clean> on 2023-01-01 00:00:00+00:00
+[2025-09-06T06:59:22.032+0000] {standard_task_runner.py:57} INFO - Started process 121 to run task
+[2025-09-06T06:59:22.064+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'orquestador', 'delete_table-clean', 'scheduled__2023-01-01T00:00:00+00:00', '--job-id', '435', '--raw', '--subdir', 'DAGS_FOLDER/orquestador.py', '--cfg-path', '/tmp/tmpf_8_t77i']
+[2025-09-06T06:59:22.070+0000] {standard_task_runner.py:85} INFO - Job 435: Subtask delete_table-clean
+[2025-09-06T06:59:22.231+0000] {task_command.py:410} INFO - Running <TaskInstance: orquestador.delete_table-clean scheduled__2023-01-01T00:00:00+00:00 [running]> on host 32a81c69218b
+[2025-09-06T06:59:22.536+0000] {taskinstance.py:1570} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='orquestador' AIRFLOW_CTX_TASK_ID='delete_table-clean' AIRFLOW_CTX_EXECUTION_DATE='2023-01-01T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2023-01-01T00:00:00+00:00'
+[2025-09-06T06:59:22.540+0000] {sql.py:262} INFO - Executing: 
+DROP TABLE IF EXISTS penguins_clean;            
+ 
+[2025-09-06T06:59:22.606+0000] {base.py:73} INFO - Using connection ID 'mysql_conn' for task execution.
+[2025-09-06T06:59:22.946+0000] {base.py:73} INFO - Using connection ID 'mysql_conn' for task execution.
+[2025-09-06T06:59:23.037+0000] {sql.py:375} INFO - Running statement: 
+DROP TABLE IF EXISTS penguins_clean;            
+ , parameters: None
+[2025-09-06T06:59:23.077+0000] {sql.py:384} INFO - Rows affected: 0
+[2025-09-06T06:59:23.107+0000] {taskinstance.py:1373} INFO - Marking task as SUCCESS. dag_id=orquestador, task_id=delete_table-clean, execution_date=20230101T000000, start_date=20250906T065921, end_date=20250906T065923
+[2025-09-06T06:59:23.190+0000] {local_task_job_runner.py:232} INFO - Task exited with return code 0
+[2025-09-06T06:59:23.269+0000] {taskinstance.py:2674} INFO - 0 downstream tasks scheduled from follow-on schedule check

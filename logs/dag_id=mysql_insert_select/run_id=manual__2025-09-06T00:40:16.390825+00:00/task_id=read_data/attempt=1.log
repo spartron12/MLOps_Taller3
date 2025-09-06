@@ -1,0 +1,23 @@
+[2025-09-06T00:40:24.894+0000] {taskinstance.py:1125} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: mysql_insert_select.read_data manual__2025-09-06T00:40:16.390825+00:00 [queued]>
+[2025-09-06T00:40:24.907+0000] {taskinstance.py:1125} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: mysql_insert_select.read_data manual__2025-09-06T00:40:16.390825+00:00 [queued]>
+[2025-09-06T00:40:24.908+0000] {taskinstance.py:1331} INFO - Starting attempt 1 of 1
+[2025-09-06T00:40:24.926+0000] {taskinstance.py:1350} INFO - Executing <Task(PythonOperator): read_data> on 2025-09-06 00:40:16.390825+00:00
+[2025-09-06T00:40:24.939+0000] {standard_task_runner.py:57} INFO - Started process 4148 to run task
+[2025-09-06T00:40:24.951+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'mysql_insert_select', 'read_data', 'manual__2025-09-06T00:40:16.390825+00:00', '--job-id', '48', '--raw', '--subdir', 'DAGS_FOLDER/crea_tablas.py', '--cfg-path', '/tmp/tmpabfdzzax']
+[2025-09-06T00:40:24.955+0000] {standard_task_runner.py:85} INFO - Job 48: Subtask read_data
+[2025-09-06T00:40:25.040+0000] {task_command.py:410} INFO - Running <TaskInstance: mysql_insert_select.read_data manual__2025-09-06T00:40:16.390825+00:00 [running]> on host 72c5ffe25b48
+[2025-09-06T00:40:25.178+0000] {taskinstance.py:1570} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='mysql_insert_select' AIRFLOW_CTX_TASK_ID='read_data' AIRFLOW_CTX_EXECUTION_DATE='2025-09-06T00:40:16.390825+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2025-09-06T00:40:16.390825+00:00'
+[2025-09-06T00:40:25.192+0000] {base.py:73} INFO - Using connection ID 'mysql_conn' for task execution.
+[2025-09-06T00:40:25.219+0000] {base.py:73} INFO - Using connection ID 'mysql_conn' for task execution.
+[2025-09-06T00:40:25.271+0000] {logging_mixin.py:149} INFO -    species  bill_length_mm  ...  sex_female  sex_male
+0        1            39.1  ...           0         1
+1        1            39.5  ...           1         0
+2        1            40.3  ...           1         0
+4        1            36.7  ...           1         0
+
+[4 rows x 9 columns]
+[2025-09-06T00:40:25.271+0000] {logging_mixin.py:149} INFO - Limieza terminada
+[2025-09-06T00:40:25.272+0000] {python.py:183} INFO - Done. Returned value was: None
+[2025-09-06T00:40:25.290+0000] {taskinstance.py:1373} INFO - Marking task as SUCCESS. dag_id=mysql_insert_select, task_id=read_data, execution_date=20250906T004016, start_date=20250906T004024, end_date=20250906T004025
+[2025-09-06T00:40:25.318+0000] {local_task_job_runner.py:232} INFO - Task exited with return code 0
+[2025-09-06T00:40:25.353+0000] {taskinstance.py:2674} INFO - 0 downstream tasks scheduled from follow-on schedule check

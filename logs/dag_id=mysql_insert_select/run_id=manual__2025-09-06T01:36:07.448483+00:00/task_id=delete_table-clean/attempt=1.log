@@ -1,0 +1,21 @@
+[2025-09-06T01:36:09.313+0000] {taskinstance.py:1125} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: mysql_insert_select.delete_table-clean manual__2025-09-06T01:36:07.448483+00:00 [queued]>
+[2025-09-06T01:36:09.325+0000] {taskinstance.py:1125} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: mysql_insert_select.delete_table-clean manual__2025-09-06T01:36:07.448483+00:00 [queued]>
+[2025-09-06T01:36:09.325+0000] {taskinstance.py:1331} INFO - Starting attempt 1 of 1
+[2025-09-06T01:36:09.343+0000] {taskinstance.py:1350} INFO - Executing <Task(MySqlOperator): delete_table-clean> on 2025-09-06 01:36:07.448483+00:00
+[2025-09-06T01:36:09.360+0000] {standard_task_runner.py:57} INFO - Started process 5197 to run task
+[2025-09-06T01:36:09.366+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'mysql_insert_select', 'delete_table-clean', 'manual__2025-09-06T01:36:07.448483+00:00', '--job-id', '82', '--raw', '--subdir', 'DAGS_FOLDER/crea_tablas.py', '--cfg-path', '/tmp/tmpbsybd6zg']
+[2025-09-06T01:36:09.370+0000] {standard_task_runner.py:85} INFO - Job 82: Subtask delete_table-clean
+[2025-09-06T01:36:09.451+0000] {task_command.py:410} INFO - Running <TaskInstance: mysql_insert_select.delete_table-clean manual__2025-09-06T01:36:07.448483+00:00 [running]> on host 72c5ffe25b48
+[2025-09-06T01:36:09.605+0000] {taskinstance.py:1570} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='mysql_insert_select' AIRFLOW_CTX_TASK_ID='delete_table-clean' AIRFLOW_CTX_EXECUTION_DATE='2025-09-06T01:36:07.448483+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2025-09-06T01:36:07.448483+00:00'
+[2025-09-06T01:36:09.606+0000] {sql.py:262} INFO - Executing: 
+DROP TABLE IF EXISTS penguins_clean;            
+ 
+[2025-09-06T01:36:09.628+0000] {base.py:73} INFO - Using connection ID 'mysql_conn' for task execution.
+[2025-09-06T01:36:09.709+0000] {base.py:73} INFO - Using connection ID 'mysql_conn' for task execution.
+[2025-09-06T01:36:09.727+0000] {sql.py:375} INFO - Running statement: 
+DROP TABLE IF EXISTS penguins_clean;            
+ , parameters: None
+[2025-09-06T01:36:09.740+0000] {sql.py:384} INFO - Rows affected: 0
+[2025-09-06T01:36:09.759+0000] {taskinstance.py:1373} INFO - Marking task as SUCCESS. dag_id=mysql_insert_select, task_id=delete_table-clean, execution_date=20250906T013607, start_date=20250906T013609, end_date=20250906T013609
+[2025-09-06T01:36:09.817+0000] {local_task_job_runner.py:232} INFO - Task exited with return code 0
+[2025-09-06T01:36:09.877+0000] {taskinstance.py:2674} INFO - 1 downstream tasks scheduled from follow-on schedule check

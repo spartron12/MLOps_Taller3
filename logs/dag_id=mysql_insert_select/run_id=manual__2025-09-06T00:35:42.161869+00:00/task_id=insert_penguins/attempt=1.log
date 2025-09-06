@@ -1,0 +1,14 @@
+[2025-09-06T00:35:48.529+0000] {taskinstance.py:1125} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: mysql_insert_select.insert_penguins manual__2025-09-06T00:35:42.161869+00:00 [queued]>
+[2025-09-06T00:35:48.544+0000] {taskinstance.py:1125} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: mysql_insert_select.insert_penguins manual__2025-09-06T00:35:42.161869+00:00 [queued]>
+[2025-09-06T00:35:48.545+0000] {taskinstance.py:1331} INFO - Starting attempt 1 of 1
+[2025-09-06T00:35:48.561+0000] {taskinstance.py:1350} INFO - Executing <Task(PythonOperator): insert_penguins> on 2025-09-06 00:35:42.161869+00:00
+[2025-09-06T00:35:48.570+0000] {standard_task_runner.py:57} INFO - Started process 4051 to run task
+[2025-09-06T00:35:48.576+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'mysql_insert_select', 'insert_penguins', 'manual__2025-09-06T00:35:42.161869+00:00', '--job-id', '43', '--raw', '--subdir', 'DAGS_FOLDER/crea_tablas.py', '--cfg-path', '/tmp/tmp_35nzk6n']
+[2025-09-06T00:35:48.582+0000] {standard_task_runner.py:85} INFO - Job 43: Subtask insert_penguins
+[2025-09-06T00:35:48.648+0000] {task_command.py:410} INFO - Running <TaskInstance: mysql_insert_select.insert_penguins manual__2025-09-06T00:35:42.161869+00:00 [running]> on host 72c5ffe25b48
+[2025-09-06T00:35:48.779+0000] {taskinstance.py:1570} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='mysql_insert_select' AIRFLOW_CTX_TASK_ID='insert_penguins' AIRFLOW_CTX_EXECUTION_DATE='2025-09-06T00:35:42.161869+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2025-09-06T00:35:42.161869+00:00'
+[2025-09-06T00:35:48.796+0000] {base.py:73} INFO - Using connection ID 'mysql_conn' for task execution.
+[2025-09-06T00:35:48.822+0000] {python.py:183} INFO - Done. Returned value was: None
+[2025-09-06T00:35:48.844+0000] {taskinstance.py:1373} INFO - Marking task as SUCCESS. dag_id=mysql_insert_select, task_id=insert_penguins, execution_date=20250906T003542, start_date=20250906T003548, end_date=20250906T003548
+[2025-09-06T00:35:48.915+0000] {local_task_job_runner.py:232} INFO - Task exited with return code 0
+[2025-09-06T00:35:48.960+0000] {taskinstance.py:2674} INFO - 0 downstream tasks scheduled from follow-on schedule check

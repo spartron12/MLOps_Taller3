@@ -1,0 +1,2 @@
+FastAPI ready at 2025-09-06 06:59:40.860868
+Model path: /opt/airflow/models/RegresionLogistica.pkl

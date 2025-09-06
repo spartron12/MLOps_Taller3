@@ -1,0 +1,14 @@
+[2025-09-06T04:58:52.832+0000] {taskinstance.py:1125} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: mysql_insert_select.test manual__2025-09-06T04:58:29.030575+00:00 [queued]>
+[2025-09-06T04:58:52.874+0000] {taskinstance.py:1125} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: mysql_insert_select.test manual__2025-09-06T04:58:29.030575+00:00 [queued]>
+[2025-09-06T04:58:52.874+0000] {taskinstance.py:1331} INFO - Starting attempt 1 of 1
+[2025-09-06T04:58:52.916+0000] {taskinstance.py:1350} INFO - Executing <Task(PythonOperator): test> on 2025-09-06 04:58:29.030575+00:00
+[2025-09-06T04:58:52.949+0000] {standard_task_runner.py:57} INFO - Started process 955 to run task
+[2025-09-06T04:58:52.960+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'mysql_insert_select', 'test', 'manual__2025-09-06T04:58:29.030575+00:00', '--job-id', '245', '--raw', '--subdir', 'DAGS_FOLDER/mysql_insert_select.py', '--cfg-path', '/tmp/tmpryzoygnn']
+[2025-09-06T04:58:52.979+0000] {standard_task_runner.py:85} INFO - Job 245: Subtask test
+[2025-09-06T04:58:53.143+0000] {task_command.py:410} INFO - Running <TaskInstance: mysql_insert_select.test manual__2025-09-06T04:58:29.030575+00:00 [running]> on host 6faa580ba6cb
+[2025-09-06T04:58:53.382+0000] {taskinstance.py:1570} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='mysql_insert_select' AIRFLOW_CTX_TASK_ID='test' AIRFLOW_CTX_EXECUTION_DATE='2025-09-06T04:58:29.030575+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2025-09-06T04:58:29.030575+00:00'
+[2025-09-06T04:58:53.384+0000] {logging_mixin.py:149} INFO - <class 'numpy.ndarray'>
+[2025-09-06T04:58:53.384+0000] {logging_mixin.py:149} INFO - Modelo cargado correctamente: <class 'numpy.ndarray'>
+[2025-09-06T04:58:53.384+0000] {logging_mixin.py:149} INFO - El objeto cargado no es un modelo válido, sino un <class 'numpy.ndarray'>
+[2025-09-06T04:58:53.421+0000] {local_task_job_runner.py:232} INFO - Task exited with return code 1
+[2025-09-06T04:58:53.461+0000] {taskinstance.py:2674} INFO - 0 downstream tasks scheduled from follow-on schedule check

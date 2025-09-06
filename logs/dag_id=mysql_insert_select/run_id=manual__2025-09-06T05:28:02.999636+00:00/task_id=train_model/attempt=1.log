@@ -1,0 +1,23 @@
+[2025-09-06T05:28:19.320+0000] {taskinstance.py:1125} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: mysql_insert_select.train_model manual__2025-09-06T05:28:02.999636+00:00 [queued]>
+[2025-09-06T05:28:19.336+0000] {taskinstance.py:1125} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: mysql_insert_select.train_model manual__2025-09-06T05:28:02.999636+00:00 [queued]>
+[2025-09-06T05:28:19.336+0000] {taskinstance.py:1331} INFO - Starting attempt 1 of 1
+[2025-09-06T05:28:19.361+0000] {taskinstance.py:1350} INFO - Executing <Task(PythonOperator): train_model> on 2025-09-06 05:28:02.999636+00:00
+[2025-09-06T05:28:19.373+0000] {standard_task_runner.py:57} INFO - Started process 1630 to run task
+[2025-09-06T05:28:19.388+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'mysql_insert_select', 'train_model', 'manual__2025-09-06T05:28:02.999636+00:00', '--job-id', '290', '--raw', '--subdir', 'DAGS_FOLDER/mysql_insert_select.py', '--cfg-path', '/tmp/tmppr5h3hdo']
+[2025-09-06T05:28:19.396+0000] {standard_task_runner.py:85} INFO - Job 290: Subtask train_model
+[2025-09-06T05:28:19.472+0000] {task_command.py:410} INFO - Running <TaskInstance: mysql_insert_select.train_model manual__2025-09-06T05:28:02.999636+00:00 [running]> on host 6faa580ba6cb
+[2025-09-06T05:28:19.635+0000] {taskinstance.py:1570} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='mysql_insert_select' AIRFLOW_CTX_TASK_ID='train_model' AIRFLOW_CTX_EXECUTION_DATE='2025-09-06T05:28:02.999636+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2025-09-06T05:28:02.999636+00:00'
+[2025-09-06T05:28:19.650+0000] {base.py:73} INFO - Using connection ID 'mysql_conn' for task execution.
+[2025-09-06T05:28:19.681+0000] {taskinstance.py:1847} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/operators/python.py", line 181, in execute
+    return_value = self.execute_callable()
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/operators/python.py", line 198, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+  File "/opt/airflow/dags/scripts/funciones.py", line 140, in train_model
+    model = KNeighborsClassifier()
+NameError: name 'KNeighborsClassifier' is not defined
+[2025-09-06T05:28:19.694+0000] {taskinstance.py:1373} INFO - Marking task as FAILED. dag_id=mysql_insert_select, task_id=train_model, execution_date=20250906T052802, start_date=20250906T052819, end_date=20250906T052819
+[2025-09-06T05:28:19.708+0000] {standard_task_runner.py:109} ERROR - Failed to execute job 290 for task train_model (name 'KNeighborsClassifier' is not defined; 1630)
+[2025-09-06T05:28:19.751+0000] {local_task_job_runner.py:232} INFO - Task exited with return code 1
+[2025-09-06T05:28:19.798+0000] {taskinstance.py:2674} INFO - 0 downstream tasks scheduled from follow-on schedule check

@@ -1,0 +1,45 @@
+[2025-09-06T01:44:52.058+0000] {taskinstance.py:1125} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: mysql_insert_select.train_model manual__2025-09-06T01:44:38.290316+00:00 [queued]>
+[2025-09-06T01:44:52.074+0000] {taskinstance.py:1125} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: mysql_insert_select.train_model manual__2025-09-06T01:44:38.290316+00:00 [queued]>
+[2025-09-06T01:44:52.074+0000] {taskinstance.py:1331} INFO - Starting attempt 1 of 1
+[2025-09-06T01:44:52.092+0000] {taskinstance.py:1350} INFO - Executing <Task(PythonOperator): train_model> on 2025-09-06 01:44:38.290316+00:00
+[2025-09-06T01:44:52.105+0000] {standard_task_runner.py:57} INFO - Started process 5375 to run task
+[2025-09-06T01:44:52.111+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'mysql_insert_select', 'train_model', 'manual__2025-09-06T01:44:38.290316+00:00', '--job-id', '94', '--raw', '--subdir', 'DAGS_FOLDER/crea_tablas.py', '--cfg-path', '/tmp/tmpakgdy8rr']
+[2025-09-06T01:44:52.114+0000] {standard_task_runner.py:85} INFO - Job 94: Subtask train_model
+[2025-09-06T01:44:52.202+0000] {task_command.py:410} INFO - Running <TaskInstance: mysql_insert_select.train_model manual__2025-09-06T01:44:38.290316+00:00 [running]> on host 72c5ffe25b48
+[2025-09-06T01:44:52.352+0000] {taskinstance.py:1570} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='mysql_insert_select' AIRFLOW_CTX_TASK_ID='train_model' AIRFLOW_CTX_EXECUTION_DATE='2025-09-06T01:44:38.290316+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2025-09-06T01:44:38.290316+00:00'
+[2025-09-06T01:44:52.369+0000] {base.py:73} INFO - Using connection ID 'mysql_conn' for task execution.
+[2025-09-06T01:44:52.605+0000] {logging_mixin.py:149} INFO - Accuracy: 1.00
+[2025-09-06T01:44:52.605+0000] {logging_mixin.py:149} INFO - Classification Report:
+[2025-09-06T01:44:52.609+0000] {logging_mixin.py:149} INFO -               precision    recall  f1-score   support
+
+           1       1.00      1.00      1.00        29
+           2       1.00      1.00      1.00        14
+           3       1.00      1.00      1.00        24
+
+    accuracy                           1.00        67
+   macro avg       1.00      1.00      1.00        67
+weighted avg       1.00      1.00      1.00        67
+[2025-09-06T01:44:52.629+0000] {taskinstance.py:1847} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.7/site-packages/sklearn/utils/__init__.py", line 1102, in check_matplotlib_support
+    import matplotlib  # noqa
+ModuleNotFoundError: No module named 'matplotlib'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/operators/python.py", line 181, in execute
+    return_value = self.execute_callable()
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/operators/python.py", line 198, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+  File "/opt/airflow/dags/scripts/funciones.py", line 150, in train_model
+    disp.plot()
+  File "/home/airflow/.local/lib/python3.7/site-packages/sklearn/metrics/_plot/confusion_matrix.py", line 121, in plot
+    check_matplotlib_support("ConfusionMatrixDisplay.plot")
+  File "/home/airflow/.local/lib/python3.7/site-packages/sklearn/utils/__init__.py", line 1107, in check_matplotlib_support
+    ) from e
+ImportError: ConfusionMatrixDisplay.plot requires matplotlib. You can install matplotlib with `pip install matplotlib`
+[2025-09-06T01:44:52.652+0000] {taskinstance.py:1373} INFO - Marking task as FAILED. dag_id=mysql_insert_select, task_id=train_model, execution_date=20250906T014438, start_date=20250906T014452, end_date=20250906T014452
+[2025-09-06T01:44:52.674+0000] {standard_task_runner.py:109} ERROR - Failed to execute job 94 for task train_model (ConfusionMatrixDisplay.plot requires matplotlib. You can install matplotlib with `pip install matplotlib`; 5375)
+[2025-09-06T01:44:52.728+0000] {local_task_job_runner.py:232} INFO - Task exited with return code 1
+[2025-09-06T01:44:52.757+0000] {taskinstance.py:2674} INFO - 0 downstream tasks scheduled from follow-on schedule check

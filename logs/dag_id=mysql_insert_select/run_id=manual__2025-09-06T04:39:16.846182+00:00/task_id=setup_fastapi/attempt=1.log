@@ -1,0 +1,21 @@
+[2025-09-06T04:39:40.769+0000] {taskinstance.py:1125} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: mysql_insert_select.setup_fastapi manual__2025-09-06T04:39:16.846182+00:00 [queued]>
+[2025-09-06T04:39:40.783+0000] {taskinstance.py:1125} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: mysql_insert_select.setup_fastapi manual__2025-09-06T04:39:16.846182+00:00 [queued]>
+[2025-09-06T04:39:40.783+0000] {taskinstance.py:1331} INFO - Starting attempt 1 of 1
+[2025-09-06T04:39:40.803+0000] {taskinstance.py:1350} INFO - Executing <Task(PythonOperator): setup_fastapi> on 2025-09-06 04:39:16.846182+00:00
+[2025-09-06T04:39:40.818+0000] {standard_task_runner.py:57} INFO - Started process 493 to run task
+[2025-09-06T04:39:40.824+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'mysql_insert_select', 'setup_fastapi', 'manual__2025-09-06T04:39:16.846182+00:00', '--job-id', '212', '--raw', '--subdir', 'DAGS_FOLDER/mysql_insert_select.py', '--cfg-path', '/tmp/tmp4inq7qwb']
+[2025-09-06T04:39:40.829+0000] {standard_task_runner.py:85} INFO - Job 212: Subtask setup_fastapi
+[2025-09-06T04:39:40.907+0000] {task_command.py:410} INFO - Running <TaskInstance: mysql_insert_select.setup_fastapi manual__2025-09-06T04:39:16.846182+00:00 [running]> on host 6faa580ba6cb
+[2025-09-06T04:39:41.041+0000] {taskinstance.py:1570} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='mysql_insert_select' AIRFLOW_CTX_TASK_ID='setup_fastapi' AIRFLOW_CTX_EXECUTION_DATE='2025-09-06T04:39:16.846182+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2025-09-06T04:39:16.846182+00:00'
+[2025-09-06T04:39:41.043+0000] {logging_mixin.py:149} INFO - ✅ Modelo encontrado en: /opt/***/models/RandomForestclassifier.pkl
+[2025-09-06T04:39:41.043+0000] {logging_mixin.py:149} INFO - 🚀 Iniciando servidor FastAPI...
+[2025-09-06T04:39:41.044+0000] {logging_mixin.py:149} INFO - 📋 Configuración de FastAPI lista:
+[2025-09-06T04:39:41.044+0000] {logging_mixin.py:149} INFO -    - Modelo: /opt/***/models/RandomForestclassifier.pkl
+[2025-09-06T04:39:41.044+0000] {logging_mixin.py:149} INFO -    - App: /opt/***/dags/fastapi_app.py
+[2025-09-06T04:39:41.044+0000] {logging_mixin.py:149} INFO -    - Puerto sugerido: 8000
+[2025-09-06T04:39:41.044+0000] {logging_mixin.py:149} INFO -    - Comando sugerido: uvicorn fastapi_app:app --host 0.0.0.0 --port 8000
+[2025-09-06T04:39:41.045+0000] {logging_mixin.py:149} INFO - ✅ FastAPI configurado y listo para usar
+[2025-09-06T04:39:41.045+0000] {python.py:183} INFO - Done. Returned value was: None
+[2025-09-06T04:39:41.061+0000] {taskinstance.py:1373} INFO - Marking task as SUCCESS. dag_id=mysql_insert_select, task_id=setup_fastapi, execution_date=20250906T043916, start_date=20250906T043940, end_date=20250906T043941
+[2025-09-06T04:39:41.117+0000] {local_task_job_runner.py:232} INFO - Task exited with return code 0
+[2025-09-06T04:39:41.154+0000] {taskinstance.py:2674} INFO - 1 downstream tasks scheduled from follow-on schedule check
