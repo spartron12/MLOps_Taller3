@@ -244,17 +244,36 @@ docker-compose ps
 
 ### Inicio Automático del Sistema
 
-*Espacio reservado para imagen de docker-compose up ejecutándose*
+![Inicio del sistema](./images/compose.jpg)
+
+![Inicio del sistema](./images/login.jpg)
+
+
+### Dashboard de Airflow - DAG Auto-Activo
+
+
+### Ejecución Automática del Pipeline
+
+![Inicio del sistema](./images/dag.jpg)
+
+
+![Inicio del sistema](./images/orquesta.jpg)
+
+
+![Inicio del sistema](./images/fastapi.jpg)
+
+
+![Inicio del sistema](./images/fastapi_prediction.jpg)
 
 ![Inicio del sistema](./images/docker_compose_startup.png)
 
-### Dashboard de Airflow - DAG Auto-Activo
+
 
 *Espacio reservado para imagen del DAG activo automáticamente*
 
 ![DAG Activo](./images/airflow_dag_active.png)
 
-### Ejecución Automática del Pipeline
+
 
 *Espacio reservado para imagen del pipeline ejecutándose*
 
