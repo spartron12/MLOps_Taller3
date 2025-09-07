@@ -155,7 +155,6 @@ AIRFLOW_CONN_FS_DEFAULT: 'fs:///'
 * Usada por **FileSensor** para monitorear archivos del sistema
 * Útil para pipelines basados en llegada de archivos
 
-``
 
 #### DAG Modificado - orquestador.py
 
@@ -177,7 +176,7 @@ with DAG(
 
 ### Secuencia de Ejecución Automática:
 
-1. docker-compose up
+1. docker compose up
 2. Servicios iniciando (MySQL + Redis + PostgreSQL)
 3. Airflow Webserver + Scheduler
 4. DAG auto-activo
@@ -204,7 +203,6 @@ Este DAG orquesta todo el flujo de **ETL + entrenamiento de modelo** de pingüin
 4. **Validación del modelo**
    - Un `FileSensor` verifica que el archivo del modelo exista antes de finalizar el pipeline.
 
----
 
 ### Resumen del flujo
 
@@ -225,17 +223,8 @@ wait_for_model_file (FileSensor)
 ```
 
 
-
-
-
 **Resultado final:**  
 Se obtiene un modelo de clasificación entrenado y validado automáticamente, listo para ser consumido desde FastAPI.
-
-
-
-
-
-
 
 
 ## Instrucciones de Ejecución
@@ -248,7 +237,7 @@ git clone https://github.com/DAVID316CORDOVA/MLOps_Taller3.git
 cd MLOps_Taller3
 
 # Limpiar entorno previo (si existe)
-docker-compose down -v
+docker compose down -v
 docker system prune -f
 ```
 
@@ -256,7 +245,7 @@ docker system prune -f
 
 ```bash
 # Después de la preparación inicial, simplemente:
-docker-compose up
+docker compose up
 ```
 
 **Qué sucede automáticamente:**
@@ -270,10 +259,10 @@ docker-compose up
 
 ```bash
 # Para ejecutar en segundo plano
-docker-compose up -d
+docker compose up -d
 
 # Ver logs en tiempo real
-docker-compose logs -f dag-auto-trigger
+docker compose logs -f dag-auto-trigger
 ```
 
 ### Verificación Manual del Estado
@@ -283,7 +272,7 @@ docker-compose logs -f dag-auto-trigger
 curl -f http://localhost:8080/health
 
 # Verificar estado de contenedores
-docker-compose ps
+docker compose ps
 
 # Acceder a la interfaz web
 # http://localhost:8080 (admin/admin)
@@ -318,7 +307,6 @@ docker-compose ps
 
 ## 6. Predicción usando el modelo generado automáticamente por AirFlow
 ![Inicio del sistema](./images/fastapi_prediction.jpg)
-
 
 ## Funciones Técnicas Implementadas
 
@@ -403,12 +391,6 @@ CREATE_PENGUINS_TABLE_CLEAN = """ CREATE TABLE penguins_clean (
 """
 
 ```
-
-
-
-
-
-
 
 
 
