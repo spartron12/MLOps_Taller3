@@ -175,15 +175,15 @@ services:
     <<: *airflow-common
     command: >
       bash -c "
-        echo '🚀 Iniciando auto-trigger del DAG...'
+        echo ' Iniciando auto-trigger del DAG...'
         sleep 120
-        echo '📋 Activando DAG orquestador...'
+        echo 'Activando DAG orquestador...'
         airflow dags unpause orquestador || echo 'DAG ya está activo'
-        echo '▶️ Disparando ejecución del DAG...'
+        echo ' Disparando ejecución del DAG...'
         airflow dags trigger orquestador
-        echo '✅ DAG disparado exitosamente!'
-        echo '🌐 Interfaz disponible en: http://localhost:8080'
-        echo '👤 Usuario: admin | 🔑 Contraseña: admin'
+        echo 'DAG disparado exitosamente!'
+        echo 'Interfaz disponible en: http://localhost:8080'
+        echo ' Usuario: admin |  Contraseña: admin'
       "
     depends_on:
       airflow-webserver:
