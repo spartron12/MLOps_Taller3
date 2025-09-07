@@ -168,18 +168,6 @@ with DAG(
 5. Auto-trigger después de 120 segundos
 6. Pipeline ML ejecutándose automáticamente
 
-### Tareas del DAG:
-
-1. **delete_table** - Limpia tabla anterior de datos raw
-2. **delete_table_clean** - Limpia tabla anterior de datos procesados  
-3. **create_table_raw** - Crea tabla para datos originales
-4. **create_table_clean** - Crea tabla para datos limpios
-5. **insert_penguins** - Carga dataset Palmer Penguins a MySQL
-6. **read_data** - Lee y procesa datos desde MySQL
-7. **train_model** - Entrena modelo de Regresión Logística
-8. **wait_for_model_file** - Verifica que modelo esté guardado
-9. **pipeline_completion** - Confirma finalización exitosa
-
 
 ## DAG Orquestador (`orquestador.py`)
 
@@ -223,6 +211,9 @@ wait_for_model_file (FileSensor)
 
 
 
+
+**Resultado final:**  
+Se obtiene un modelo de clasificación entrenado y validado automáticamente, listo para ser consumido desde FastAPI.
 
 
 
