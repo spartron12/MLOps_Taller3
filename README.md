@@ -265,8 +265,12 @@ docker-compose ps
 ![Inicio del sistema](./images/orquesta.jpg)
 
 
+## Visualización de la interfaz gráfica de FASTAPI 
+
 ![Inicio del sistema](./images/fastapi.jpg)
 
+
+## Predicción usando el modelo genero automáticamente por AirFlow
 
 ![Inicio del sistema](./images/fastapi_prediction.jpg)
 
