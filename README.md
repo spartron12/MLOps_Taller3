@@ -135,6 +135,37 @@ dag-auto-trigger:
 
 **Función:** Ejecuta automáticamente el pipeline 2 minutos después del inicio completo.
 
+````markdown
+## 🔌 Conexiones Configuradas
+
+### 🐬 MySQL
+```yaml
+AIRFLOW_CONN_MYSQL_CONN: 'mysql://my_app_user:my_app_pass@mysql:3306/my_app_db'
+````
+
+* Permite conexión directa de **MySqlHook** y **MySqlOperator**
+* Evita hardcodear credenciales en el código
+
+### 📂 FileSensor
+
+```yaml
+AIRFLOW_CONN_FS_DEFAULT: 'fs:///'
+```
+
+* Usada por **FileSensor** para monitorear archivos del sistema
+* Útil para pipelines basados en llegada de archivos
+
+```
+```
+
+
+
+
+
+
+
+
+
 #### DAG Modificado - orquestador.py
 
 **Configuración para auto-activación:**
@@ -149,6 +180,7 @@ with DAG(
 ```
 
 **Función:** Garantiza que el DAG esté listo para ejecución automática.
+
 
 ## Flujo del Pipeline Automatizado
 
