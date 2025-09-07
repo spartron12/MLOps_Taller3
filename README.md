@@ -318,7 +318,6 @@ def start_fastapi_server():
 ```sql
 DROP_PENGUINS_TABLE = """
 DROP TABLE IF EXISTS penguins_raw;
-
 """
 
 DROP_PENGUINS_CLEAN_TABLE = """
