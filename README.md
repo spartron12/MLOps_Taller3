@@ -6,13 +6,13 @@ Este proyecto implementa un pipeline completo de Machine Learning Operations (ML
 
 ## Características Principales
 
-- Pipeline completamente automatizado - Ejecución automática sin intervención manual
-- Orquestación con Apache Airflow - Gestión inteligente del flujo de trabajo
-- Contenerización completa - Docker Compose para todos los servicios
-- Base de datos MySQL - Almacenamiento persistente de datos
-- API FastAPI - Servicio de predicciones en tiempo real
-- Auto-trigger del DAG - Activación automática al iniciar el sistema
-- Monitoreo en tiempo real - Dashboard web de Airflow
+- Pipeline completamente automatizado con ejecución sin intervención manual
+- Orquestación inteligente del flujo de trabajo con Apache Airflow
+- Contenerización completa mediante Docker Compose
+- Base de datos MySQL para almacenamiento persistente
+- API FastAPI para servicio de predicciones en tiempo real
+- Auto-trigger del DAG con activación automática al iniciar
+- Dashboard web de Airflow para monitoreo en tiempo real
 
 ## Estructura del Proyecto
 
@@ -44,191 +44,144 @@ MLOps_Taller3/
 ### Descripción de Componentes
 
 - **dags/**:
-  - **orquestador.py**: DAG principal de Airflow que automatiza todo el pipeline de Machine Learning.
-  - **scripts/funciones.py**: Funciones principales del pipeline (insert_data, read_data, train_model).
-  - **scripts/queries.py**: Consultas SQL para creación y manipulación de tablas en MySQL.
-  - **fastapi_ready.txt**: Archivo de señal para indicar que FastAPI está listo.
-  - **fastapi.log**: Logs del servicio FastAPI.
+  - **orquestador.py**: DAG principal de Airflow que automatiza todo el pipeline de Machine Learning
+  - **scripts/funciones.py**: Funciones principales del pipeline (insert_data, read_data, train_model)
+  - **scripts/queries.py**: Consultas SQL para creación y manipulación de tablas en MySQL
+  - **fastapi_ready.txt**: Archivo de señal para indicar que FastAPI está listo
+  - **fastapi.log**: Logs del servicio FastAPI
 
 - **fastapi/**:
-  - **main.py**: Aplicación principal de FastAPI que consume los modelos entrenados.
-  - **Dockerfile**: Contenerización del servicio API.
-  - **requirements.txt**: Dependencias específicas para el servicio FastAPI.
-
-- **logs/**:
-  - Directorio donde Airflow almacena todos los logs de ejecución de tareas y DAGs.
+  - **main.py**: Aplicación principal de FastAPI que consume los modelos entrenados
+  - **Dockerfile**: Contenerización del servicio API
+  - **requirements.txt**: Dependencias específicas para el servicio FastAPI
 
 - **models/**:
-  - Carpeta compartida que almacena los modelos entrenados en formato pickle (.pkl).
-  - Es montada como volumen en todos los contenedores que necesitan acceso a los modelos.
-  - Contiene archivos como: `RegresionLogistica.pkl`.
+  - Carpeta compartida que almacena los modelos entrenados en formato pickle (.pkl)
+  - Es montada como volumen en todos los contenedores que necesitan acceso a los modelos
+  - Contiene archivos como: `RegresionLogistica.pkl`
 
-- **plugins/**:
-  - Directorio para plugins personalizados de Airflow (vacío por defecto).
+- **logs/**: Directorio donde Airflow almacena todos los logs de ejecución de tareas y DAGs
+- **plugins/**: Directorio para plugins personalizados de Airflow (vacío por defecto)
+- **images/**: Carpeta para almacenar capturas de pantalla y evidencias del funcionamiento
 
-- **images/**:
-  - Carpeta para almacenar capturas de pantalla y evidencias del funcionamiento del sistema.
-
-- **.env**:
-  - Archivo de variables de entorno que configura automáticamente las credenciales de Airflow.
-  - Elimina la necesidad de configuración manual con credenciales predeterminadas (admin/admin).
+- **.env**: 
+  - Archivo de variables de entorno que configura automáticamente las credenciales de Airflow
+  - Elimina la necesidad de configuración manual con credenciales predeterminadas (admin/admin)
 
 - **docker-compose.yaml**:
-  - Archivo de orquestación que define y gestiona todos los contenedores del proyecto.
-  - Incluye servicios para: Airflow (webserver, scheduler, worker, triggerer), MySQL, Redis, PostgreSQL, FastAPI.
-  - Contiene el servicio `dag-auto-trigger` que ejecuta automáticamente el pipeline después del inicio.
-  - Facilita el montaje de volúmenes para compartir modelos y datos entre contenedores.
-  - Configura la red interna para comunicación entre servicios.
-
----
+  - Archivo de orquestación que define y gestiona todos los contenedores del proyecto
+  - Incluye servicios para: Airflow (webserver, scheduler, worker, triggerer), MySQL, Redis, PostgreSQL, FastAPI
+  - Contiene el servicio `dag-auto-trigger` que ejecuta automáticamente el pipeline después del inicio
 
 ## Automatización Implementada
 
-### Por qué se automatizó
+### Problema Original vs Solución
 
-**Problema original:**
-- Requería login manual en Airflow (`admin`/`admin`)
-- Necesitaba activar DAGs manualmente
-- Requería trigger manual del pipeline
-- Intervención humana en múltiples pasos
+| **Antes (Manual)** | **Después (Automatizado)** |
+|--------------------|-----------------------------|
+| Login manual requerido | Credenciales admin/admin predeterminadas |
+| Activar DAGs manualmente | DAG activo automáticamente al iniciar |
+| Trigger manual del pipeline | Auto-trigger programado después de 120s |
+| 5-7 pasos manuales | 1 comando: `docker-compose up` |
+| Riesgo de errores humanos | Proceso 100% confiable |
 
-**Solución automatizada:**
-- Zero-touch deployment - Una sola ejecución automatiza todo
-- Auto-activación de DAGs - Se activan automáticamente al iniciar
-- Auto-trigger del pipeline - Se ejecuta automáticamente una vez
-- Credenciales simplificadas - Admin/admin predeterminado
-
-### Componentes de Automatización
+### Componentes Clave de Automatización
 
 #### Archivo .env - Configuración Automática
-
 ```bash
-# Variables de entorno para automatización
 AIRFLOW_UID=50000
 _AIRFLOW_WWW_USER_USERNAME=admin
 _AIRFLOW_WWW_USER_PASSWORD=admin
 AIRFLOW_PROJ_DIR=.
 ```
 
-**Función:** Elimina la necesidad de configuración manual de credenciales.
-
-#### docker-compose.yaml - Orquestación Automática
-
-**Características de automatización implementadas:**
-
+#### docker-compose.yaml - Configuración Automática
 ```yaml
-# DAGs activos por defecto (sin intervención manual)
+# DAGs activos por defecto
 AIRFLOW__CORE__DAGS_ARE_PAUSED_AT_CREATION: 'false'
 
-# Detección rápida de cambios en DAGs
-AIRFLOW__SCHEDULER__DAG_DIR_LIST_INTERVAL: 30
-AIRFLOW__SCHEDULER__PARSING_PROCESSES: 2
-```
-
-**Servicio de Auto-Trigger integrado:**
-```yaml
+# Servicio que ejecuta automáticamente el DAG
 dag-auto-trigger:
   command: >
     bash -c "
-      echo 'Iniciando auto-trigger del DAG...'
       sleep 120
-      echo 'Activando DAG orquestador...'
-      airflow dags unpause orquestador || echo 'DAG ya está activo'
-      echo 'Disparando ejecución del DAG...'
+      airflow dags unpause orquestador
       airflow dags trigger orquestador
-      echo 'DAG disparado exitosamente!'
     "
 ```
 
-**Función:** Ejecuta automáticamente el pipeline 2 minutos después del inicio completo.
-
-#### DAG Modificado - orquestador.py
-
-**Configuración para auto-activación:**
+#### DAG orquestador.py - Auto-activación
 ```python
 with DAG(
     dag_id="orquestador",
-    schedule_interval=None,          # Ejecución controlada automáticamente
-    catchup=False,
-    is_paused_upon_creation=False,   # CLAVE: DAG activo desde creación
-    tags=['ml', 'penguins', 'auto-execution']
+    schedule_interval=None,
+    is_paused_upon_creation=False,  # DAG activo desde creación
+    catchup=False
 ) as dag:
 ```
 
-**Función:** Garantiza que el DAG esté listo para ejecución automática.
+### Conexiones Configuradas
 
-## Flujo del Pipeline Automatizado
+#### MySQL
+```yaml
+AIRFLOW_CONN_MYSQL_CONN: 'mysql://my_app_user:my_app_pass@mysql:3306/my_app_db'
+```
+- Permite conexión directa de `MySqlHook` y `MySqlOperator`
+- Evita hardcodear credenciales en el código
 
-### Secuencia de Ejecución Automática:
+#### FileSensor
+```yaml
+AIRFLOW_CONN_FS_DEFAULT: 'fs:///'
+```
+- Usada por `FileSensor` para monitorear archivos del sistema
+- Útil para pipelines basados en llegada de archivos
 
-1. docker-compose up
-2. Servicios iniciando (MySQL + Redis + PostgreSQL)
-3. Airflow Webserver + Scheduler
-4. DAG auto-activo
-5. Auto-trigger después de 120 segundos
-6. Pipeline ML ejecutándose automáticamente
+## Flujo del Pipeline
+
+### Secuencia de Ejecución:
+1. **docker-compose up** inicia todos los servicios
+2. Servicios base: MySQL, Redis, PostgreSQL
+3. Airflow: Webserver, Scheduler, Worker
+4. DAG se activa automáticamente
+5. Auto-trigger ejecuta pipeline después de 120 segundos
 
 ### Tareas del DAG:
-
-1. **delete_table** - Limpia tabla anterior de datos raw
-2. **delete_table_clean** - Limpia tabla anterior de datos procesados  
-3. **create_table_raw** - Crea tabla para datos originales
-4. **create_table_clean** - Crea tabla para datos limpios
-5. **insert_penguins** - Carga dataset Palmer Penguins a MySQL
-6. **read_data** - Lee y procesa datos desde MySQL
-7. **train_model** - Entrena modelo de Regresión Logística
-8. **wait_for_model_file** - Verifica que modelo esté guardado
-9. **pipeline_completion** - Confirma finalización exitosa
+1. **delete_table** / **delete_table_clean** - Limpia tablas existentes
+2. **create_table_raw** / **create_table_clean** - Crea estructura de tablas
+3. **insert_penguins** - Carga dataset Palmer Penguins a MySQL
+4. **read_data** - Procesa y limpia datos desde MySQL
+5. **train_model** - Entrena modelo de Regresión Logística
+6. **wait_for_model_file** - Verifica que modelo esté guardado
+7. **pipeline_completion** - Confirma finalización exitosa
 
 ## Instrucciones de Ejecución
 
-### Preparación Inicial
+### Ejecución Automática
 
 ```bash
-# Clonar el repositorio
+# Clonar repositorio
 git clone https://github.com/DAVID316CORDOVA/MLOps_Taller3.git
 cd MLOps_Taller3
 
-# Limpiar entorno previo (si existe)
-docker-compose down -v
+# Limpiar entorno previo
+docker compose down -v
 docker system prune -f
-```
 
-### Ejecución Completamente Automática (Recomendado)
-
-```bash
-# Después de la preparación inicial, simplemente:
+# Ejecutar pipeline completo
 docker-compose up
 ```
 
-**Qué sucede automáticamente:**
-- Se crean todos los contenedores necesarios
-- Airflow inicia con credenciales admin/admin
-- DAG se activa automáticamente
-- Pipeline se ejecuta una vez automáticamente después de 2 minutos
-- FastAPI queda disponible con modelo entrenado
-
-### Ejecución en Background
+### Monitoreo Opcional
 
 ```bash
-# Para ejecutar en segundo plano
-docker-compose up -d
+# Ejecución en background
+docker compose up -d
 
-# Ver logs en tiempo real
-docker-compose logs -f dag-auto-trigger
-```
+# Ver logs del auto-trigger
+docker compose logs -f dag-auto-trigger
 
-### Verificación Manual del Estado
-
-```bash
-# Verificar que Airflow esté disponible
-curl -f http://localhost:8080/health
-
-# Verificar estado de contenedores
-docker-compose ps
-
-# Acceder a la interfaz web
-# http://localhost:8080 (admin/admin)
+# Verificar estado
+docker compose ps
 ```
 
 ## Acceso a Servicios
@@ -238,216 +191,117 @@ docker-compose ps
 | **Airflow Web** | http://localhost:8080 | admin/admin | Dashboard del pipeline |
 | **FastAPI Docs** | http://localhost:8000/docs | - | API de predicciones |
 | **MySQL** | localhost:3306 | my_app_user/my_app_pass | Base de datos |
-| **Flower (opcional)** | http://localhost:5555 | - | Monitor de Celery |
 
-## Ejecución del Proyecto
+## Evidencia Visual
 
 ### 1. Levantamiento de la aplicación
 ![Inicio del sistema](./images/compose.jpg)
 
 ### 2. Login de Airflow
-![Inicio del sistema](./images/login.jpg)
+![Login Airflow](./images/login.jpg)
 
-### 3. Ejecución Automática del Pipeline - DAG Auto-Activo
-![Inicio del sistema](./images/dag.jpg)
+### 3. DAG Auto-Activo
+![DAG Activo](./images/dag.jpg)
 
-## 4. Visualización todos los tasks de Airflow ejecutándose automaticamente
-![Inicio del sistema](./images/orquesta.jpg)
+### 4. Ejecución de Tasks Automática
+![Orquestación](./images/orquesta.jpg)
 
-## 5. Visualización del correcto funcionamiento de la interfaz gráfica de FASTAPI 
-![Inicio del sistema](./images/fastapi.jpg)
+### 5. Interfaz FastAPI Funcionando
+![FastAPI Interface](./images/fastapi.jpg)
 
+### 6. Predicción con Modelo Entrenado
+![Predicción](./images/fastapi_prediction.jpg)
 
-## 6. Predicción usando el modelo generado automáticamente por AirFlow
-![Inicio del sistema](./images/fastapi_prediction.jpg)
-
-
-## Funciones Técnicas Implementadas
+## Implementación Técnica
 
 ### funciones.py - Lógica del Pipeline
 
 ```python
 def insert_data():
     """Inserta datos de Palmer Penguins en MySQL"""
-    # Carga dataset Palmer Penguins
-    # Limpia valores nulos y NaN
-    # Inserta registros en tabla MySQL `penguins_raw`
+    # Carga dataset, limpia NaN, inserta en tabla raw
 
 def clean(df):
-    """Limpia y transforma los datos"""
-    # Elimina registros con valores nulos
-    # Aplica One-Hot Encoding para variables categóricas (island, sex)
-    # Convierte columnas booleanas a enteros
-    # Transforma species a valores numéricos (1=Adelie, 2=Chinstrap, 3=Gentoo)
-    # Retorna DataFrame listo para almacenar en `penguins_clean`
+    """Limpia y transforma datos"""
+    # One-Hot Encoding, conversión de species a numérico
+    # Retorna DataFrame procesado
 
 def read_data():
-    """Lee y procesa datos desde MySQL"""
-    # Extrae registros desde tabla `penguins_raw`
-    # Aplica limpieza y codificación con `clean()`
-    # Inserta datos transformados en tabla `penguins_clean`
+    """Procesa datos desde MySQL"""
+    # Extrae desde raw, aplica limpieza, guarda en clean
 
 def train_model():
-    """Entrena y guarda un modelo de Regresión Logística"""
-    # Carga datos desde tabla `penguins_clean`
-    # Divide dataset en entrenamiento y prueba
-    # Entrena modelo de clasificación
-    # Evalúa desempeño con métricas (accuracy, confusion matrix, classification report)
-    # Guarda modelo en `/opt/airflow/models/RegresionLogistica.pkl`
-
-def start_fastapi_server():
-    """Prepara entorno FastAPI para servir el modelo"""
-    # Verifica existencia del modelo entrenado
-    # Configura aplicación FastAPI ubicada en `/opt/airflow/dags/fastapi_app.py`
-    # Genera archivo de estado `fastapi_ready.txt`
-    # Sugiere comando de despliegue con uvicorn
-
+    """Entrena modelo de clasificación"""
+    # Carga datos clean, entrena Regresión Logística
+    # Guarda en /opt/airflow/models/RegresionLogistica.pkl
 ```
 
 ### queries.py - Consultas SQL
 
 ```sql
-DROP_PENGUINS_TABLE = """
-DROP TABLE IF EXISTS penguins_raw;
-"""
+CREATE_PENGUINS_TABLE_RAW = """
+CREATE TABLE penguins_raw (
+    species VARCHAR(50), island VARCHAR(50),
+    bill_length_mm DOUBLE, bill_depth_mm DOUBLE,
+    flipper_length_mm DOUBLE, body_mass_g DOUBLE,
+    sex VARCHAR(10), year INT
+)"""
 
-DROP_PENGUINS_CLEAN_TABLE = """
-DROP TABLE IF EXISTS penguins_clean;            
- """
-
-
-CREATE_PENGUINS_TABLE_RAW = """ CREATE TABLE penguins_raw (
-            species VARCHAR(50) NULL,
-            island VARCHAR(50) NULL,
-            bill_length_mm DOUBLE NULL,
-            bill_depth_mm DOUBLE NULL,
-            flipper_length_mm DOUBLE NULL,
-            body_mass_g DOUBLE NULL,
-            sex VARCHAR(10) NULL,
-            year INT NULL
-        )
-        """
-
-CREATE_PENGUINS_TABLE_CLEAN = """ CREATE TABLE penguins_clean (
-    species INT NULL,
-    bill_length_mm DOUBLE NULL,
-    bill_depth_mm DOUBLE NULL,
-    flipper_length_mm DOUBLE NULL,
-    body_mass_g DOUBLE NULL,
-    year INT NULL,
-    island_Biscoe INT NULL,
-    island_Dream INT NULL,
-    island_Torgersen INT NULL,
-    sex_female INT NULL,
-    sex_male INT NULL
-        );      
-        """
-"""
-
+CREATE_PENGUINS_TABLE_CLEAN = """
+CREATE TABLE penguins_clean (
+    species INT, bill_length_mm DOUBLE, bill_depth_mm DOUBLE,
+    flipper_length_mm DOUBLE, body_mass_g DOUBLE, year INT,
+    island_Biscoe INT, island_Dream INT, island_Torgersen INT,
+    sex_female INT, sex_male INT
+)"""
 ```
-
-##  Automatización del DAG
-
-Para evitar activar y ejecutar manualmente el DAG desde la interfaz de Airflow, se agregó un servicio especial en el `docker-compose.yml` llamado **`dag-auto-trigger`**.  
-
-Este servicio:
-- Espera 120 segundos para garantizar que Airflow esté completamente iniciado.
-- Despausa automáticamente el DAG **`orquestador`**.
-- Lanza su primera ejecución sin intervención manual.
-
-| **Antes (Manual)** | **Después (Automatizado)** |
-|--------------------|-----------------------------|
-| Activar DAG en la UI | DAG activo automáticamente |
-| Trigger manual | Auto-trigger inicial |
-| 3–4 pasos manuales | 1 comando: `docker-compose up` |
-| Riesgo de olvidos | Proceso 100% confiable |
-
----
-
-##  Conexiones Configuradas en Airflow
-
-En el archivo `docker-compose.yml` se declararon conexiones globales en las variables de entorno de Airflow. Esto simplifica el uso de **hooks** y **operadores** dentro de los DAGs:
-
-### Conexión a MySQL
-`AIRFLOW_CONN_MYSQL_CONN = 'mysql://my_app_user:my_app_pass@mysql:3306/my_app_db'`  
-
-- Permite que `MySqlHook` y `MySqlOperator` se conecten directamente a la base de datos.  
-- Evita hardcodear credenciales dentro de los DAGs.  
-
-### Conexión para FileSensor
-`AIRFLOW_CONN_FS_DEFAULT = 'fs:///'`  
-
-- Usada por `FileSensor` para monitorear archivos en el sistema.  
-- Útil en pipelines basados en llegada de archivos (CSV, parquet, etc.).  
-
----
-
-## Beneficios
-
-- DAG siempre inicia activo y ejecutado en la primera corrida.  
-- Configuración de conexiones centralizada y reutilizable.  
-- Menor riesgo de errores manuales en producción.  
-- Todo listo con **un solo comando**:  
-
-
-
-
-
-
 
 ## Tecnologías Utilizadas
 
 | Categoría | Tecnología | Propósito |
 |-----------|------------|-----------|
-| **Orquestación** | Apache Airflow 2.6.0 | Pipeline automation |
-| **Contenerización** | Docker + Docker Compose | Service orchestration |
-| **Base de Datos** | MySQL 8.0 | Data persistence |
-| **Cache/Queue** | Redis + PostgreSQL | Airflow backend |
-| **API Framework** | FastAPI + Uvicorn | Model serving |
-| **ML Libraries** | scikit-learn, pandas | Model training |
-| **Task Queue** | Celery | Distributed task execution |
+| **Orquestación** | Apache Airflow 2.6.0 | Automatización de pipeline |
+| **Contenerización** | Docker + Docker Compose | Orquestación de servicios |
+| **Base de Datos** | MySQL 8.0 | Persistencia de datos |
+| **Cache/Queue** | Redis + PostgreSQL | Backend de Airflow |
+| **API Framework** | FastAPI + Uvicorn | Servicio de modelos |
+| **ML Libraries** | scikit-learn, pandas | Entrenamiento de modelos |
 
-## Logs y Monitoreo
+## Monitoreo y Logs
 
-### Ubicación de Logs:
-- **Airflow Logs:** `./logs/`
-- **FastAPI Logs:** `./dags/fastapi.log`
-- **Container Logs:** `docker-compose logs [service-name]`
+### Ubicación de Logs
+- **Airflow**: `./logs/`
+- **FastAPI**: `./dags/fastapi.log`
+- **Contenedores**: `docker compose logs [service-name]`
 
-### Comandos de Monitoreo:
+### Comandos de Monitoreo
 ```bash
-# Ver logs en tiempo real de todos los servicios
-docker-compose logs -f
+# Logs en tiempo real
+docker compose logs -f
 
-# Ver logs específicos de un servicio
-docker-compose logs airflow-scheduler
-docker-compose logs fastapi
-docker-compose logs mysql
-docker-compose logs dag-auto-trigger
+# Estado de contenedores
+docker compose ps
 
-# Verificar estado de contenedores
-docker-compose ps
-
-# Ver uso de recursos
+# Uso de recursos
 docker stats
 ```
 
 ## Conclusiones
 
-Este proyecto demuestra una implementación exitosa de MLOps con automatización completa:
+Este proyecto implementa un pipeline MLOps completamente automatizado que:
 
-1. **Pipeline End-to-End:** Desde datos raw hasta modelo productivo
-2. **Zero-Touch Deployment:** Una ejecución automatiza todo el proceso
-3. **Escalabilidad:** Arquitectura preparada para múltiples modelos
-4. **Monitoreo:** Dashboard web para seguimiento en tiempo real
-5. **Reproducibilidad:** Proceso completamente documentado y repetible
+- Elimina intervención manual en el proceso de entrenamiento
+- Proporciona un sistema reproducible y confiable
+- Integra todas las fases del ciclo de vida del modelo
+- Ofrece monitoreo y trazabilidad completa
+- Reduce significativamente el tiempo de despliegue
 
-La automatización elimina errores humanos y reduce significativamente el tiempo de despliegue, estableciendo una base sólida para operaciones de Machine Learning en producción.
+La automatización establecida proporciona una base sólida para operaciones de Machine Learning en producción, minimizando errores humanos y maximizando la eficiencia operacional.
 
 ---
 
 **Desarrollado por:**
-- Sebastian Rodríguez
+- Sebastian Rodríguez  
 - David Córdova
 
 **Proyecto:** MLOps Taller 3 - Pipeline Automatizado  
