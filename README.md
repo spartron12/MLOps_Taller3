@@ -45,7 +45,7 @@ MLOps_Taller3/
 
 - **dags/**:
   - **orquestador.py**: DAG principal de Airflow que automatiza todo el pipeline de Machine Learning
-  - **scripts/funciones.py**: Funciones principales del pipeline (insert_data, read_data, train_model)
+  - **scripts/funciones.py**: Funciones principales del pipeline (insert_data,clean, read_data, train_model)
   - **scripts/queries.py**: Consultas SQL para creación y manipulación de tablas en MySQL
   - **fastapi_ready.txt**: Archivo de señal para indicar que FastAPI está listo
   - **fastapi.log**: Logs del servicio FastAPI
