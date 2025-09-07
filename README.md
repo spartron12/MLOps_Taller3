@@ -180,6 +180,56 @@ with DAG(
 8. **wait_for_model_file** - Verifica que modelo esté guardado
 9. **pipeline_completion** - Confirma finalización exitosa
 
+
+## DAG Orquestador (`orquestador.py`)
+
+Este DAG orquesta todo el flujo de **ETL + entrenamiento de modelo** de pingüinos:
+
+1. **Preparación de la base de datos**
+   - Elimina tablas previas (`penguins_raw` y `penguins_clean`) si existen.
+   - Crea las tablas necesarias para datos crudos y limpios.
+
+2. **Carga y limpieza de datos**
+   - Inserta datos de pingüinos en la tabla `penguins_raw`.
+   - Limpia y transforma los datos (One-Hot Encoding, manejo de NaN) y los inserta en `penguins_clean`.
+
+3. **Entrenamiento del modelo**
+   - Usa los datos limpios para entrenar un modelo de **Regresión Logística**.
+   - Guarda el modelo entrenado en `/opt/airflow/models/RegresionLogistica.pkl`.
+
+4. **Validación del modelo**
+   - Un `FileSensor` verifica que el archivo del modelo exista antes de finalizar el pipeline.
+
+---
+
+### Resumen del flujo
+
+delete_table + delete_table_clean
+         ↓
+  create_table_raw
+         ↓
+ create_table_clean
+         ↓
+   insert_data
+         ↓
+    read_data
+         ↓
+   train_model
+         ↓
+wait_for_model_file (FileSensor)
+
+
+
+
+
+
+
+
+
+
+
+
+
 ## Instrucciones de Ejecución
 
 ### Preparación Inicial
