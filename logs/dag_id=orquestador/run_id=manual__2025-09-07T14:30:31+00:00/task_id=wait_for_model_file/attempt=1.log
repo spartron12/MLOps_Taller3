@@ -1,0 +1,16 @@
+[2025-09-07T14:30:47.472+0000] {taskinstance.py:1125} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: orquestador.wait_for_model_file manual__2025-09-07T14:30:31+00:00 [queued]>
+[2025-09-07T14:30:47.487+0000] {taskinstance.py:1125} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: orquestador.wait_for_model_file manual__2025-09-07T14:30:31+00:00 [queued]>
+[2025-09-07T14:30:47.487+0000] {taskinstance.py:1331} INFO - Starting attempt 1 of 1
+[2025-09-07T14:30:47.511+0000] {taskinstance.py:1350} INFO - Executing <Task(FileSensor): wait_for_model_file> on 2025-09-07 14:30:31+00:00
+[2025-09-07T14:30:47.519+0000] {standard_task_runner.py:57} INFO - Started process 158 to run task
+[2025-09-07T14:30:47.526+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'orquestador', 'wait_for_model_file', 'manual__2025-09-07T14:30:31+00:00', '--job-id', '30', '--raw', '--subdir', 'DAGS_FOLDER/orquestador.py', '--cfg-path', '/tmp/tmphtydl4ev']
+[2025-09-07T14:30:47.530+0000] {standard_task_runner.py:85} INFO - Job 30: Subtask wait_for_model_file
+[2025-09-07T14:30:47.593+0000] {task_command.py:410} INFO - Running <TaskInstance: orquestador.wait_for_model_file manual__2025-09-07T14:30:31+00:00 [running]> on host b7ae5b05c2d0
+[2025-09-07T14:30:47.747+0000] {taskinstance.py:1570} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='orquestador' AIRFLOW_CTX_TASK_ID='wait_for_model_file' AIRFLOW_CTX_EXECUTION_DATE='2025-09-07T14:30:31+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2025-09-07T14:30:31+00:00'
+[2025-09-07T14:30:47.748+0000] {base.py:73} INFO - Using connection ID 'fs_default' for task execution.
+[2025-09-07T14:30:47.749+0000] {filesystem.py:64} INFO - Poking for file /opt/***/models/RegresionLogistica.pkl
+[2025-09-07T14:30:47.749+0000] {filesystem.py:69} INFO - Found File /opt/***/models/RegresionLogistica.pkl last modified: 20250907143045
+[2025-09-07T14:30:47.749+0000] {base.py:255} INFO - Success criteria met. Exiting.
+[2025-09-07T14:30:47.763+0000] {taskinstance.py:1373} INFO - Marking task as SUCCESS. dag_id=orquestador, task_id=wait_for_model_file, execution_date=20250907T143031, start_date=20250907T143047, end_date=20250907T143047
+[2025-09-07T14:30:47.819+0000] {local_task_job_runner.py:232} INFO - Task exited with return code 0
+[2025-09-07T14:30:47.846+0000] {taskinstance.py:2674} INFO - 0 downstream tasks scheduled from follow-on schedule check
