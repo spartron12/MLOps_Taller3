@@ -204,6 +204,7 @@ Este DAG orquesta todo el flujo de **ETL + entrenamiento de modelo** de pingüin
 
 ### Resumen del flujo
 
+```
 delete_table + delete_table_clean
          ↓
   create_table_raw
@@ -217,7 +218,7 @@ delete_table + delete_table_clean
    train_model
          ↓
 wait_for_model_file (FileSensor)
-
+```
 
 
 
