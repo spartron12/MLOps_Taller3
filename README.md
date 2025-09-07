@@ -246,7 +246,7 @@ docker-compose ps
 
 *Espacio reservado para imagen de docker-compose up ejecutándose*
 
-![Inicio del sistema](./images/compose.png)
+![Inicio del sistema](./images/compose.jpg)
 
 
 ![Inicio del sistema](./images/docker_compose_startup.png)
