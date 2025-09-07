@@ -275,3 +275,259 @@ NameError: name 'MODEL_PATH' is not defined
 [2025-09-06T07:16:03.759+0000] {logging_mixin.py:149} INFO - [2025-09-06T07:16:03.758+0000] {dag.py:2726} INFO - Sync 1 DAGs
 [2025-09-06T07:16:03.795+0000] {logging_mixin.py:149} INFO - [2025-09-06T07:16:03.795+0000] {dag.py:3490} INFO - Setting next_dagrun for orquestador to None, run_after=None
 [2025-09-06T07:16:03.828+0000] {processor.py:178} INFO - Processing /opt/airflow/dags/orquestador.py took 1.211 seconds
+[2025-09-06T21:36:15.431+0000] {processor.py:156} INFO - Started process (PID=86) to work on /opt/airflow/dags/orquestador.py
+[2025-09-06T21:36:15.437+0000] {processor.py:799} INFO - Processing file /opt/airflow/dags/orquestador.py for tasks to queue
+[2025-09-06T21:36:15.437+0000] {logging_mixin.py:149} INFO - [2025-09-06T21:36:15.437+0000] {dagbag.py:541} INFO - Filling up the DagBag from /opt/airflow/dags/orquestador.py
+[2025-09-06T21:36:18.940+0000] {processor.py:809} INFO - DAG(s) dict_keys(['orquestador']) retrieved from /opt/airflow/dags/orquestador.py
+[2025-09-06T21:36:19.079+0000] {logging_mixin.py:149} INFO - [2025-09-06T21:36:19.079+0000] {dag.py:2726} INFO - Sync 1 DAGs
+[2025-09-06T21:36:19.112+0000] {logging_mixin.py:149} INFO - [2025-09-06T21:36:19.112+0000] {dag.py:3490} INFO - Setting next_dagrun for orquestador to 2023-01-01T00:00:00+00:00, run_after=2023-01-01T00:00:00+00:00
+[2025-09-06T21:36:19.141+0000] {processor.py:178} INFO - Processing /opt/airflow/dags/orquestador.py took 3.721 seconds
+[2025-09-06T21:36:49.326+0000] {processor.py:156} INFO - Started process (PID=105) to work on /opt/airflow/dags/orquestador.py
+[2025-09-06T21:36:49.328+0000] {processor.py:799} INFO - Processing file /opt/airflow/dags/orquestador.py for tasks to queue
+[2025-09-06T21:36:49.328+0000] {logging_mixin.py:149} INFO - [2025-09-06T21:36:49.328+0000] {dagbag.py:541} INFO - Filling up the DagBag from /opt/airflow/dags/orquestador.py
+[2025-09-06T21:36:50.236+0000] {processor.py:809} INFO - DAG(s) dict_keys(['orquestador']) retrieved from /opt/airflow/dags/orquestador.py
+[2025-09-06T21:36:50.265+0000] {logging_mixin.py:149} INFO - [2025-09-06T21:36:50.264+0000] {dag.py:2726} INFO - Sync 1 DAGs
+[2025-09-06T21:36:50.290+0000] {logging_mixin.py:149} INFO - [2025-09-06T21:36:50.290+0000] {dag.py:3490} INFO - Setting next_dagrun for orquestador to 2023-01-01T00:00:00+00:00, run_after=2023-01-01T00:00:00+00:00
+[2025-09-06T21:36:50.308+0000] {processor.py:178} INFO - Processing /opt/airflow/dags/orquestador.py took 0.987 seconds
+[2025-09-06T21:37:20.521+0000] {processor.py:156} INFO - Started process (PID=118) to work on /opt/airflow/dags/orquestador.py
+[2025-09-06T21:37:20.522+0000] {processor.py:799} INFO - Processing file /opt/airflow/dags/orquestador.py for tasks to queue
+[2025-09-06T21:37:20.524+0000] {logging_mixin.py:149} INFO - [2025-09-06T21:37:20.524+0000] {dagbag.py:541} INFO - Filling up the DagBag from /opt/airflow/dags/orquestador.py
+[2025-09-06T21:37:21.432+0000] {processor.py:809} INFO - DAG(s) dict_keys(['orquestador']) retrieved from /opt/airflow/dags/orquestador.py
+[2025-09-06T21:37:21.471+0000] {logging_mixin.py:149} INFO - [2025-09-06T21:37:21.471+0000] {dag.py:2726} INFO - Sync 1 DAGs
+[2025-09-06T21:37:21.506+0000] {logging_mixin.py:149} INFO - [2025-09-06T21:37:21.506+0000] {dag.py:3490} INFO - Setting next_dagrun for orquestador to 2023-01-01T00:00:00+00:00, run_after=2023-01-01T00:00:00+00:00
+[2025-09-06T21:37:21.528+0000] {processor.py:178} INFO - Processing /opt/airflow/dags/orquestador.py took 1.010 seconds
+[2025-09-06T21:37:51.704+0000] {processor.py:156} INFO - Started process (PID=135) to work on /opt/airflow/dags/orquestador.py
+[2025-09-06T21:37:51.705+0000] {processor.py:799} INFO - Processing file /opt/airflow/dags/orquestador.py for tasks to queue
+[2025-09-06T21:37:51.706+0000] {logging_mixin.py:149} INFO - [2025-09-06T21:37:51.706+0000] {dagbag.py:541} INFO - Filling up the DagBag from /opt/airflow/dags/orquestador.py
+[2025-09-06T21:37:52.604+0000] {processor.py:809} INFO - DAG(s) dict_keys(['orquestador']) retrieved from /opt/airflow/dags/orquestador.py
+[2025-09-06T21:37:52.632+0000] {logging_mixin.py:149} INFO - [2025-09-06T21:37:52.632+0000] {dag.py:2726} INFO - Sync 1 DAGs
+[2025-09-06T21:37:52.659+0000] {logging_mixin.py:149} INFO - [2025-09-06T21:37:52.659+0000] {dag.py:3490} INFO - Setting next_dagrun for orquestador to 2023-01-01T00:00:00+00:00, run_after=2023-01-01T00:00:00+00:00
+[2025-09-06T21:37:52.679+0000] {processor.py:178} INFO - Processing /opt/airflow/dags/orquestador.py took 0.978 seconds
+[2025-09-06T21:38:22.831+0000] {processor.py:156} INFO - Started process (PID=153) to work on /opt/airflow/dags/orquestador.py
+[2025-09-06T21:38:22.835+0000] {processor.py:799} INFO - Processing file /opt/airflow/dags/orquestador.py for tasks to queue
+[2025-09-06T21:38:22.837+0000] {logging_mixin.py:149} INFO - [2025-09-06T21:38:22.836+0000] {dagbag.py:541} INFO - Filling up the DagBag from /opt/airflow/dags/orquestador.py
+[2025-09-06T21:38:24.270+0000] {processor.py:809} INFO - DAG(s) dict_keys(['orquestador']) retrieved from /opt/airflow/dags/orquestador.py
+[2025-09-06T21:38:24.313+0000] {logging_mixin.py:149} INFO - [2025-09-06T21:38:24.312+0000] {dag.py:2726} INFO - Sync 1 DAGs
+[2025-09-06T21:38:24.346+0000] {logging_mixin.py:149} INFO - [2025-09-06T21:38:24.346+0000] {dag.py:3490} INFO - Setting next_dagrun for orquestador to 2023-01-01T00:00:00+00:00, run_after=2023-01-01T00:00:00+00:00
+[2025-09-06T21:38:24.370+0000] {processor.py:178} INFO - Processing /opt/airflow/dags/orquestador.py took 1.544 seconds
+[2025-09-06T21:38:54.457+0000] {processor.py:156} INFO - Started process (PID=171) to work on /opt/airflow/dags/orquestador.py
+[2025-09-06T21:38:54.458+0000] {processor.py:799} INFO - Processing file /opt/airflow/dags/orquestador.py for tasks to queue
+[2025-09-06T21:38:54.459+0000] {logging_mixin.py:149} INFO - [2025-09-06T21:38:54.459+0000] {dagbag.py:541} INFO - Filling up the DagBag from /opt/airflow/dags/orquestador.py
+[2025-09-06T21:38:55.458+0000] {processor.py:809} INFO - DAG(s) dict_keys(['orquestador']) retrieved from /opt/airflow/dags/orquestador.py
+[2025-09-06T21:38:55.515+0000] {logging_mixin.py:149} INFO - [2025-09-06T21:38:55.514+0000] {dag.py:2726} INFO - Sync 1 DAGs
+[2025-09-06T21:38:55.541+0000] {logging_mixin.py:149} INFO - [2025-09-06T21:38:55.540+0000] {dag.py:3490} INFO - Setting next_dagrun for orquestador to 2023-01-01T00:00:00+00:00, run_after=2023-01-01T00:00:00+00:00
+[2025-09-06T21:38:55.561+0000] {processor.py:178} INFO - Processing /opt/airflow/dags/orquestador.py took 1.108 seconds
+[2025-09-06T21:39:25.761+0000] {processor.py:156} INFO - Started process (PID=187) to work on /opt/airflow/dags/orquestador.py
+[2025-09-06T21:39:25.763+0000] {processor.py:799} INFO - Processing file /opt/airflow/dags/orquestador.py for tasks to queue
+[2025-09-06T21:39:25.764+0000] {logging_mixin.py:149} INFO - [2025-09-06T21:39:25.764+0000] {dagbag.py:541} INFO - Filling up the DagBag from /opt/airflow/dags/orquestador.py
+[2025-09-06T21:39:26.678+0000] {processor.py:809} INFO - DAG(s) dict_keys(['orquestador']) retrieved from /opt/airflow/dags/orquestador.py
+[2025-09-06T21:39:26.721+0000] {logging_mixin.py:149} INFO - [2025-09-06T21:39:26.721+0000] {dag.py:2726} INFO - Sync 1 DAGs
+[2025-09-06T21:39:26.755+0000] {logging_mixin.py:149} INFO - [2025-09-06T21:39:26.755+0000] {dag.py:3490} INFO - Setting next_dagrun for orquestador to 2023-01-01T00:00:00+00:00, run_after=2023-01-01T00:00:00+00:00
+[2025-09-06T21:39:26.773+0000] {processor.py:178} INFO - Processing /opt/airflow/dags/orquestador.py took 1.015 seconds
+[2025-09-06T21:39:56.943+0000] {processor.py:156} INFO - Started process (PID=204) to work on /opt/airflow/dags/orquestador.py
+[2025-09-06T21:39:56.945+0000] {processor.py:799} INFO - Processing file /opt/airflow/dags/orquestador.py for tasks to queue
+[2025-09-06T21:39:56.946+0000] {logging_mixin.py:149} INFO - [2025-09-06T21:39:56.946+0000] {dagbag.py:541} INFO - Filling up the DagBag from /opt/airflow/dags/orquestador.py
+[2025-09-06T21:39:57.878+0000] {processor.py:809} INFO - DAG(s) dict_keys(['orquestador']) retrieved from /opt/airflow/dags/orquestador.py
+[2025-09-06T21:39:57.913+0000] {logging_mixin.py:149} INFO - [2025-09-06T21:39:57.913+0000] {dag.py:2726} INFO - Sync 1 DAGs
+[2025-09-06T21:39:57.945+0000] {logging_mixin.py:149} INFO - [2025-09-06T21:39:57.945+0000] {dag.py:3490} INFO - Setting next_dagrun for orquestador to 2023-01-01T00:00:00+00:00, run_after=2023-01-01T00:00:00+00:00
+[2025-09-06T21:39:57.967+0000] {processor.py:178} INFO - Processing /opt/airflow/dags/orquestador.py took 1.028 seconds
+[2025-09-06T21:40:28.163+0000] {processor.py:156} INFO - Started process (PID=221) to work on /opt/airflow/dags/orquestador.py
+[2025-09-06T21:40:28.165+0000] {processor.py:799} INFO - Processing file /opt/airflow/dags/orquestador.py for tasks to queue
+[2025-09-06T21:40:28.166+0000] {logging_mixin.py:149} INFO - [2025-09-06T21:40:28.165+0000] {dagbag.py:541} INFO - Filling up the DagBag from /opt/airflow/dags/orquestador.py
+[2025-09-06T21:40:29.062+0000] {processor.py:809} INFO - DAG(s) dict_keys(['orquestador']) retrieved from /opt/airflow/dags/orquestador.py
+[2025-09-06T21:40:29.096+0000] {logging_mixin.py:149} INFO - [2025-09-06T21:40:29.096+0000] {dag.py:2726} INFO - Sync 1 DAGs
+[2025-09-06T21:40:29.124+0000] {logging_mixin.py:149} INFO - [2025-09-06T21:40:29.124+0000] {dag.py:3490} INFO - Setting next_dagrun for orquestador to 2023-01-01T00:00:00+00:00, run_after=2023-01-01T00:00:00+00:00
+[2025-09-06T21:40:29.145+0000] {processor.py:178} INFO - Processing /opt/airflow/dags/orquestador.py took 0.988 seconds
+[2025-09-06T21:40:59.242+0000] {processor.py:156} INFO - Started process (PID=238) to work on /opt/airflow/dags/orquestador.py
+[2025-09-06T21:40:59.244+0000] {processor.py:799} INFO - Processing file /opt/airflow/dags/orquestador.py for tasks to queue
+[2025-09-06T21:40:59.245+0000] {logging_mixin.py:149} INFO - [2025-09-06T21:40:59.245+0000] {dagbag.py:541} INFO - Filling up the DagBag from /opt/airflow/dags/orquestador.py
+[2025-09-06T21:41:00.145+0000] {processor.py:809} INFO - DAG(s) dict_keys(['orquestador']) retrieved from /opt/airflow/dags/orquestador.py
+[2025-09-06T21:41:00.173+0000] {logging_mixin.py:149} INFO - [2025-09-06T21:41:00.173+0000] {dag.py:2726} INFO - Sync 1 DAGs
+[2025-09-06T21:41:00.201+0000] {logging_mixin.py:149} INFO - [2025-09-06T21:41:00.201+0000] {dag.py:3490} INFO - Setting next_dagrun for orquestador to 2023-01-01T00:00:00+00:00, run_after=2023-01-01T00:00:00+00:00
+[2025-09-06T21:41:00.224+0000] {processor.py:178} INFO - Processing /opt/airflow/dags/orquestador.py took 0.985 seconds
+[2025-09-06T21:41:30.374+0000] {processor.py:156} INFO - Started process (PID=256) to work on /opt/airflow/dags/orquestador.py
+[2025-09-06T21:41:30.377+0000] {processor.py:799} INFO - Processing file /opt/airflow/dags/orquestador.py for tasks to queue
+[2025-09-06T21:41:30.378+0000] {logging_mixin.py:149} INFO - [2025-09-06T21:41:30.377+0000] {dagbag.py:541} INFO - Filling up the DagBag from /opt/airflow/dags/orquestador.py
+[2025-09-06T21:41:31.286+0000] {processor.py:809} INFO - DAG(s) dict_keys(['orquestador']) retrieved from /opt/airflow/dags/orquestador.py
+[2025-09-06T21:41:31.318+0000] {logging_mixin.py:149} INFO - [2025-09-06T21:41:31.317+0000] {dag.py:2726} INFO - Sync 1 DAGs
+[2025-09-06T21:41:31.343+0000] {logging_mixin.py:149} INFO - [2025-09-06T21:41:31.342+0000] {dag.py:3490} INFO - Setting next_dagrun for orquestador to 2023-01-01T00:00:00+00:00, run_after=2023-01-01T00:00:00+00:00
+[2025-09-06T21:41:31.361+0000] {processor.py:178} INFO - Processing /opt/airflow/dags/orquestador.py took 0.990 seconds
+[2025-09-06T21:48:44.503+0000] {processor.py:156} INFO - Started process (PID=88) to work on /opt/airflow/dags/orquestador.py
+[2025-09-06T21:48:44.510+0000] {processor.py:799} INFO - Processing file /opt/airflow/dags/orquestador.py for tasks to queue
+[2025-09-06T21:48:44.512+0000] {logging_mixin.py:149} INFO - [2025-09-06T21:48:44.512+0000] {dagbag.py:541} INFO - Filling up the DagBag from /opt/airflow/dags/orquestador.py
+[2025-09-06T21:48:47.572+0000] {processor.py:809} INFO - DAG(s) dict_keys(['orquestador']) retrieved from /opt/airflow/dags/orquestador.py
+[2025-09-06T21:48:47.733+0000] {logging_mixin.py:149} INFO - [2025-09-06T21:48:47.732+0000] {dag.py:2726} INFO - Sync 1 DAGs
+[2025-09-06T21:48:47.765+0000] {logging_mixin.py:149} INFO - [2025-09-06T21:48:47.765+0000] {dag.py:3490} INFO - Setting next_dagrun for orquestador to 2023-01-01T00:00:00+00:00, run_after=2023-01-01T00:00:00+00:00
+[2025-09-06T21:48:47.786+0000] {processor.py:178} INFO - Processing /opt/airflow/dags/orquestador.py took 3.301 seconds
+[2025-09-06T21:49:17.963+0000] {processor.py:156} INFO - Started process (PID=102) to work on /opt/airflow/dags/orquestador.py
+[2025-09-06T21:49:17.965+0000] {processor.py:799} INFO - Processing file /opt/airflow/dags/orquestador.py for tasks to queue
+[2025-09-06T21:49:17.966+0000] {logging_mixin.py:149} INFO - [2025-09-06T21:49:17.966+0000] {dagbag.py:541} INFO - Filling up the DagBag from /opt/airflow/dags/orquestador.py
+[2025-09-06T21:49:18.922+0000] {processor.py:809} INFO - DAG(s) dict_keys(['orquestador']) retrieved from /opt/airflow/dags/orquestador.py
+[2025-09-06T21:49:18.953+0000] {logging_mixin.py:149} INFO - [2025-09-06T21:49:18.953+0000] {dag.py:2726} INFO - Sync 1 DAGs
+[2025-09-06T21:49:18.979+0000] {logging_mixin.py:149} INFO - [2025-09-06T21:49:18.979+0000] {dag.py:3490} INFO - Setting next_dagrun for orquestador to 2023-01-01T00:00:00+00:00, run_after=2023-01-01T00:00:00+00:00
+[2025-09-06T21:49:18.997+0000] {processor.py:178} INFO - Processing /opt/airflow/dags/orquestador.py took 1.037 seconds
+[2025-09-06T21:49:49.143+0000] {processor.py:156} INFO - Started process (PID=123) to work on /opt/airflow/dags/orquestador.py
+[2025-09-06T21:49:49.144+0000] {processor.py:799} INFO - Processing file /opt/airflow/dags/orquestador.py for tasks to queue
+[2025-09-06T21:49:49.145+0000] {logging_mixin.py:149} INFO - [2025-09-06T21:49:49.145+0000] {dagbag.py:541} INFO - Filling up the DagBag from /opt/airflow/dags/orquestador.py
+[2025-09-06T21:49:50.007+0000] {processor.py:809} INFO - DAG(s) dict_keys(['orquestador']) retrieved from /opt/airflow/dags/orquestador.py
+[2025-09-06T21:49:50.053+0000] {logging_mixin.py:149} INFO - [2025-09-06T21:49:50.052+0000] {dag.py:2726} INFO - Sync 1 DAGs
+[2025-09-06T21:49:50.089+0000] {logging_mixin.py:149} INFO - [2025-09-06T21:49:50.089+0000] {dag.py:3490} INFO - Setting next_dagrun for orquestador to None, run_after=None
+[2025-09-06T21:49:50.107+0000] {processor.py:178} INFO - Processing /opt/airflow/dags/orquestador.py took 0.967 seconds
+[2025-09-06T21:50:20.245+0000] {processor.py:156} INFO - Started process (PID=140) to work on /opt/airflow/dags/orquestador.py
+[2025-09-06T21:50:20.248+0000] {processor.py:799} INFO - Processing file /opt/airflow/dags/orquestador.py for tasks to queue
+[2025-09-06T21:50:20.249+0000] {logging_mixin.py:149} INFO - [2025-09-06T21:50:20.249+0000] {dagbag.py:541} INFO - Filling up the DagBag from /opt/airflow/dags/orquestador.py
+[2025-09-06T21:50:21.158+0000] {processor.py:809} INFO - DAG(s) dict_keys(['orquestador']) retrieved from /opt/airflow/dags/orquestador.py
+[2025-09-06T21:50:21.186+0000] {logging_mixin.py:149} INFO - [2025-09-06T21:50:21.185+0000] {dag.py:2726} INFO - Sync 1 DAGs
+[2025-09-06T21:50:21.214+0000] {logging_mixin.py:149} INFO - [2025-09-06T21:50:21.214+0000] {dag.py:3490} INFO - Setting next_dagrun for orquestador to None, run_after=None
+[2025-09-06T21:50:21.231+0000] {processor.py:178} INFO - Processing /opt/airflow/dags/orquestador.py took 0.990 seconds
+[2025-09-06T21:50:51.411+0000] {processor.py:156} INFO - Started process (PID=157) to work on /opt/airflow/dags/orquestador.py
+[2025-09-06T21:50:51.413+0000] {processor.py:799} INFO - Processing file /opt/airflow/dags/orquestador.py for tasks to queue
+[2025-09-06T21:50:51.413+0000] {logging_mixin.py:149} INFO - [2025-09-06T21:50:51.413+0000] {dagbag.py:541} INFO - Filling up the DagBag from /opt/airflow/dags/orquestador.py
+[2025-09-06T21:50:52.277+0000] {processor.py:809} INFO - DAG(s) dict_keys(['orquestador']) retrieved from /opt/airflow/dags/orquestador.py
+[2025-09-06T21:50:52.317+0000] {logging_mixin.py:149} INFO - [2025-09-06T21:50:52.316+0000] {dag.py:2726} INFO - Sync 1 DAGs
+[2025-09-06T21:50:52.348+0000] {logging_mixin.py:149} INFO - [2025-09-06T21:50:52.347+0000] {dag.py:3490} INFO - Setting next_dagrun for orquestador to None, run_after=None
+[2025-09-06T21:50:52.369+0000] {processor.py:178} INFO - Processing /opt/airflow/dags/orquestador.py took 0.963 seconds
+[2025-09-06T21:51:22.521+0000] {processor.py:156} INFO - Started process (PID=174) to work on /opt/airflow/dags/orquestador.py
+[2025-09-06T21:51:22.523+0000] {processor.py:799} INFO - Processing file /opt/airflow/dags/orquestador.py for tasks to queue
+[2025-09-06T21:51:22.524+0000] {logging_mixin.py:149} INFO - [2025-09-06T21:51:22.524+0000] {dagbag.py:541} INFO - Filling up the DagBag from /opt/airflow/dags/orquestador.py
+[2025-09-06T21:51:23.593+0000] {processor.py:809} INFO - DAG(s) dict_keys(['orquestador']) retrieved from /opt/airflow/dags/orquestador.py
+[2025-09-06T21:51:23.621+0000] {logging_mixin.py:149} INFO - [2025-09-06T21:51:23.621+0000] {dag.py:2726} INFO - Sync 1 DAGs
+[2025-09-06T21:51:23.646+0000] {logging_mixin.py:149} INFO - [2025-09-06T21:51:23.646+0000] {dag.py:3490} INFO - Setting next_dagrun for orquestador to None, run_after=None
+[2025-09-06T21:51:23.664+0000] {processor.py:178} INFO - Processing /opt/airflow/dags/orquestador.py took 1.150 seconds
+[2025-09-06T21:51:53.758+0000] {processor.py:156} INFO - Started process (PID=192) to work on /opt/airflow/dags/orquestador.py
+[2025-09-06T21:51:53.760+0000] {processor.py:799} INFO - Processing file /opt/airflow/dags/orquestador.py for tasks to queue
+[2025-09-06T21:51:53.761+0000] {logging_mixin.py:149} INFO - [2025-09-06T21:51:53.761+0000] {dagbag.py:541} INFO - Filling up the DagBag from /opt/airflow/dags/orquestador.py
+[2025-09-06T21:51:54.736+0000] {processor.py:809} INFO - DAG(s) dict_keys(['orquestador']) retrieved from /opt/airflow/dags/orquestador.py
+[2025-09-06T21:51:54.781+0000] {logging_mixin.py:149} INFO - [2025-09-06T21:51:54.781+0000] {dag.py:2726} INFO - Sync 1 DAGs
+[2025-09-06T21:51:54.808+0000] {logging_mixin.py:149} INFO - [2025-09-06T21:51:54.808+0000] {dag.py:3490} INFO - Setting next_dagrun for orquestador to None, run_after=None
+[2025-09-06T21:51:54.826+0000] {processor.py:178} INFO - Processing /opt/airflow/dags/orquestador.py took 1.072 seconds
+[2025-09-06T21:52:24.959+0000] {processor.py:156} INFO - Started process (PID=209) to work on /opt/airflow/dags/orquestador.py
+[2025-09-06T21:52:24.960+0000] {processor.py:799} INFO - Processing file /opt/airflow/dags/orquestador.py for tasks to queue
+[2025-09-06T21:52:24.961+0000] {logging_mixin.py:149} INFO - [2025-09-06T21:52:24.961+0000] {dagbag.py:541} INFO - Filling up the DagBag from /opt/airflow/dags/orquestador.py
+[2025-09-06T21:52:25.878+0000] {processor.py:809} INFO - DAG(s) dict_keys(['orquestador']) retrieved from /opt/airflow/dags/orquestador.py
+[2025-09-06T21:52:25.918+0000] {logging_mixin.py:149} INFO - [2025-09-06T21:52:25.917+0000] {dag.py:2726} INFO - Sync 1 DAGs
+[2025-09-06T21:52:25.952+0000] {logging_mixin.py:149} INFO - [2025-09-06T21:52:25.951+0000] {dag.py:3490} INFO - Setting next_dagrun for orquestador to None, run_after=None
+[2025-09-06T21:52:25.975+0000] {processor.py:178} INFO - Processing /opt/airflow/dags/orquestador.py took 1.021 seconds
+[2025-09-06T21:52:56.093+0000] {processor.py:156} INFO - Started process (PID=227) to work on /opt/airflow/dags/orquestador.py
+[2025-09-06T21:52:56.095+0000] {processor.py:799} INFO - Processing file /opt/airflow/dags/orquestador.py for tasks to queue
+[2025-09-06T21:52:56.095+0000] {logging_mixin.py:149} INFO - [2025-09-06T21:52:56.095+0000] {dagbag.py:541} INFO - Filling up the DagBag from /opt/airflow/dags/orquestador.py
+[2025-09-06T21:52:56.979+0000] {processor.py:809} INFO - DAG(s) dict_keys(['orquestador']) retrieved from /opt/airflow/dags/orquestador.py
+[2025-09-06T21:52:57.017+0000] {logging_mixin.py:149} INFO - [2025-09-06T21:52:57.016+0000] {dag.py:2726} INFO - Sync 1 DAGs
+[2025-09-06T21:52:57.053+0000] {logging_mixin.py:149} INFO - [2025-09-06T21:52:57.053+0000] {dag.py:3490} INFO - Setting next_dagrun for orquestador to None, run_after=None
+[2025-09-06T21:52:57.072+0000] {processor.py:178} INFO - Processing /opt/airflow/dags/orquestador.py took 0.983 seconds
+[2025-09-06T21:53:27.232+0000] {processor.py:156} INFO - Started process (PID=244) to work on /opt/airflow/dags/orquestador.py
+[2025-09-06T21:53:27.234+0000] {processor.py:799} INFO - Processing file /opt/airflow/dags/orquestador.py for tasks to queue
+[2025-09-06T21:53:27.235+0000] {logging_mixin.py:149} INFO - [2025-09-06T21:53:27.234+0000] {dagbag.py:541} INFO - Filling up the DagBag from /opt/airflow/dags/orquestador.py
+[2025-09-06T21:53:28.125+0000] {processor.py:809} INFO - DAG(s) dict_keys(['orquestador']) retrieved from /opt/airflow/dags/orquestador.py
+[2025-09-06T21:53:28.161+0000] {logging_mixin.py:149} INFO - [2025-09-06T21:53:28.160+0000] {dag.py:2726} INFO - Sync 1 DAGs
+[2025-09-06T21:53:28.190+0000] {logging_mixin.py:149} INFO - [2025-09-06T21:53:28.189+0000] {dag.py:3490} INFO - Setting next_dagrun for orquestador to None, run_after=None
+[2025-09-06T21:53:28.233+0000] {processor.py:178} INFO - Processing /opt/airflow/dags/orquestador.py took 1.006 seconds
+[2025-09-06T21:53:58.461+0000] {processor.py:156} INFO - Started process (PID=261) to work on /opt/airflow/dags/orquestador.py
+[2025-09-06T21:53:58.463+0000] {processor.py:799} INFO - Processing file /opt/airflow/dags/orquestador.py for tasks to queue
+[2025-09-06T21:53:58.464+0000] {logging_mixin.py:149} INFO - [2025-09-06T21:53:58.463+0000] {dagbag.py:541} INFO - Filling up the DagBag from /opt/airflow/dags/orquestador.py
+[2025-09-06T21:53:59.349+0000] {processor.py:809} INFO - DAG(s) dict_keys(['orquestador']) retrieved from /opt/airflow/dags/orquestador.py
+[2025-09-06T21:53:59.383+0000] {logging_mixin.py:149} INFO - [2025-09-06T21:53:59.383+0000] {dag.py:2726} INFO - Sync 1 DAGs
+[2025-09-06T21:53:59.420+0000] {logging_mixin.py:149} INFO - [2025-09-06T21:53:59.420+0000] {dag.py:3490} INFO - Setting next_dagrun for orquestador to None, run_after=None
+[2025-09-06T21:53:59.446+0000] {processor.py:178} INFO - Processing /opt/airflow/dags/orquestador.py took 0.989 seconds
+[2025-09-06T21:54:29.578+0000] {processor.py:156} INFO - Started process (PID=279) to work on /opt/airflow/dags/orquestador.py
+[2025-09-06T21:54:29.581+0000] {processor.py:799} INFO - Processing file /opt/airflow/dags/orquestador.py for tasks to queue
+[2025-09-06T21:54:29.581+0000] {logging_mixin.py:149} INFO - [2025-09-06T21:54:29.581+0000] {dagbag.py:541} INFO - Filling up the DagBag from /opt/airflow/dags/orquestador.py
+[2025-09-06T21:54:30.462+0000] {processor.py:809} INFO - DAG(s) dict_keys(['orquestador']) retrieved from /opt/airflow/dags/orquestador.py
+[2025-09-06T21:54:30.500+0000] {logging_mixin.py:149} INFO - [2025-09-06T21:54:30.500+0000] {dag.py:2726} INFO - Sync 1 DAGs
+[2025-09-06T21:54:30.526+0000] {logging_mixin.py:149} INFO - [2025-09-06T21:54:30.526+0000] {dag.py:3490} INFO - Setting next_dagrun for orquestador to None, run_after=None
+[2025-09-06T21:54:30.544+0000] {processor.py:178} INFO - Processing /opt/airflow/dags/orquestador.py took 0.970 seconds
+[2025-09-06T21:55:00.698+0000] {processor.py:156} INFO - Started process (PID=295) to work on /opt/airflow/dags/orquestador.py
+[2025-09-06T21:55:00.700+0000] {processor.py:799} INFO - Processing file /opt/airflow/dags/orquestador.py for tasks to queue
+[2025-09-06T21:55:00.700+0000] {logging_mixin.py:149} INFO - [2025-09-06T21:55:00.700+0000] {dagbag.py:541} INFO - Filling up the DagBag from /opt/airflow/dags/orquestador.py
+[2025-09-06T21:55:01.744+0000] {processor.py:809} INFO - DAG(s) dict_keys(['orquestador']) retrieved from /opt/airflow/dags/orquestador.py
+[2025-09-06T21:55:01.786+0000] {logging_mixin.py:149} INFO - [2025-09-06T21:55:01.785+0000] {dag.py:2726} INFO - Sync 1 DAGs
+[2025-09-06T21:55:01.819+0000] {logging_mixin.py:149} INFO - [2025-09-06T21:55:01.819+0000] {dag.py:3490} INFO - Setting next_dagrun for orquestador to None, run_after=None
+[2025-09-06T21:55:01.845+0000] {processor.py:178} INFO - Processing /opt/airflow/dags/orquestador.py took 1.151 seconds
+[2025-09-06T21:55:31.962+0000] {processor.py:156} INFO - Started process (PID=312) to work on /opt/airflow/dags/orquestador.py
+[2025-09-06T21:55:31.964+0000] {processor.py:799} INFO - Processing file /opt/airflow/dags/orquestador.py for tasks to queue
+[2025-09-06T21:55:31.965+0000] {logging_mixin.py:149} INFO - [2025-09-06T21:55:31.965+0000] {dagbag.py:541} INFO - Filling up the DagBag from /opt/airflow/dags/orquestador.py
+[2025-09-06T21:55:32.924+0000] {processor.py:809} INFO - DAG(s) dict_keys(['orquestador']) retrieved from /opt/airflow/dags/orquestador.py
+[2025-09-06T21:55:32.971+0000] {logging_mixin.py:149} INFO - [2025-09-06T21:55:32.970+0000] {dag.py:2726} INFO - Sync 1 DAGs
+[2025-09-06T21:55:33.004+0000] {logging_mixin.py:149} INFO - [2025-09-06T21:55:33.004+0000] {dag.py:3490} INFO - Setting next_dagrun for orquestador to None, run_after=None
+[2025-09-06T21:55:33.036+0000] {processor.py:178} INFO - Processing /opt/airflow/dags/orquestador.py took 1.078 seconds
+[2025-09-06T21:56:03.266+0000] {processor.py:156} INFO - Started process (PID=329) to work on /opt/airflow/dags/orquestador.py
+[2025-09-06T21:56:03.268+0000] {processor.py:799} INFO - Processing file /opt/airflow/dags/orquestador.py for tasks to queue
+[2025-09-06T21:56:03.269+0000] {logging_mixin.py:149} INFO - [2025-09-06T21:56:03.269+0000] {dagbag.py:541} INFO - Filling up the DagBag from /opt/airflow/dags/orquestador.py
+[2025-09-06T21:56:04.329+0000] {processor.py:809} INFO - DAG(s) dict_keys(['orquestador']) retrieved from /opt/airflow/dags/orquestador.py
+[2025-09-06T21:56:04.371+0000] {logging_mixin.py:149} INFO - [2025-09-06T21:56:04.370+0000] {dag.py:2726} INFO - Sync 1 DAGs
+[2025-09-06T21:56:04.403+0000] {logging_mixin.py:149} INFO - [2025-09-06T21:56:04.403+0000] {dag.py:3490} INFO - Setting next_dagrun for orquestador to None, run_after=None
+[2025-09-06T21:56:04.441+0000] {processor.py:178} INFO - Processing /opt/airflow/dags/orquestador.py took 1.182 seconds
+[2025-09-06T22:03:55.369+0000] {processor.py:156} INFO - Started process (PID=89) to work on /opt/airflow/dags/orquestador.py
+[2025-09-06T22:03:55.376+0000] {processor.py:799} INFO - Processing file /opt/airflow/dags/orquestador.py for tasks to queue
+[2025-09-06T22:03:55.377+0000] {logging_mixin.py:149} INFO - [2025-09-06T22:03:55.377+0000] {dagbag.py:541} INFO - Filling up the DagBag from /opt/airflow/dags/orquestador.py
+[2025-09-06T22:03:58.910+0000] {processor.py:809} INFO - DAG(s) dict_keys(['orquestador']) retrieved from /opt/airflow/dags/orquestador.py
+[2025-09-06T22:03:59.223+0000] {logging_mixin.py:149} INFO - [2025-09-06T22:03:59.223+0000] {manager.py:504} INFO - Created Permission View: can delete on DAG:orquestador
+[2025-09-06T22:03:59.246+0000] {logging_mixin.py:149} INFO - [2025-09-06T22:03:59.246+0000] {manager.py:504} INFO - Created Permission View: can read on DAG:orquestador
+[2025-09-06T22:03:59.258+0000] {logging_mixin.py:149} INFO - [2025-09-06T22:03:59.258+0000] {manager.py:504} INFO - Created Permission View: can edit on DAG:orquestador
+[2025-09-06T22:03:59.258+0000] {logging_mixin.py:149} INFO - [2025-09-06T22:03:59.258+0000] {dag.py:2726} INFO - Sync 1 DAGs
+[2025-09-06T22:03:59.290+0000] {logging_mixin.py:149} INFO - [2025-09-06T22:03:59.290+0000] {dag.py:2747} INFO - Creating ORM DAG for orquestador
+[2025-09-06T22:03:59.306+0000] {logging_mixin.py:149} INFO - [2025-09-06T22:03:59.306+0000] {dag.py:3490} INFO - Setting next_dagrun for orquestador to 2023-01-01T00:00:00+00:00, run_after=2023-01-01T00:00:00+00:00
+[2025-09-06T22:03:59.337+0000] {processor.py:178} INFO - Processing /opt/airflow/dags/orquestador.py took 3.972 seconds
+[2025-09-06T22:04:29.549+0000] {processor.py:156} INFO - Started process (PID=111) to work on /opt/airflow/dags/orquestador.py
+[2025-09-06T22:04:29.550+0000] {processor.py:799} INFO - Processing file /opt/airflow/dags/orquestador.py for tasks to queue
+[2025-09-06T22:04:29.551+0000] {logging_mixin.py:149} INFO - [2025-09-06T22:04:29.551+0000] {dagbag.py:541} INFO - Filling up the DagBag from /opt/airflow/dags/orquestador.py
+[2025-09-06T22:04:30.519+0000] {processor.py:809} INFO - DAG(s) dict_keys(['orquestador']) retrieved from /opt/airflow/dags/orquestador.py
+[2025-09-06T22:04:30.563+0000] {logging_mixin.py:149} INFO - [2025-09-06T22:04:30.562+0000] {dag.py:2726} INFO - Sync 1 DAGs
+[2025-09-06T22:04:30.590+0000] {logging_mixin.py:149} INFO - [2025-09-06T22:04:30.590+0000] {dag.py:3490} INFO - Setting next_dagrun for orquestador to None, run_after=None
+[2025-09-06T22:04:30.608+0000] {processor.py:178} INFO - Processing /opt/airflow/dags/orquestador.py took 1.063 seconds
+[2025-09-06T22:05:00.836+0000] {processor.py:156} INFO - Started process (PID=128) to work on /opt/airflow/dags/orquestador.py
+[2025-09-06T22:05:00.839+0000] {processor.py:799} INFO - Processing file /opt/airflow/dags/orquestador.py for tasks to queue
+[2025-09-06T22:05:00.840+0000] {logging_mixin.py:149} INFO - [2025-09-06T22:05:00.840+0000] {dagbag.py:541} INFO - Filling up the DagBag from /opt/airflow/dags/orquestador.py
+[2025-09-06T22:05:01.770+0000] {processor.py:809} INFO - DAG(s) dict_keys(['orquestador']) retrieved from /opt/airflow/dags/orquestador.py
+[2025-09-06T22:05:01.805+0000] {logging_mixin.py:149} INFO - [2025-09-06T22:05:01.805+0000] {dag.py:2726} INFO - Sync 1 DAGs
+[2025-09-06T22:05:01.830+0000] {logging_mixin.py:149} INFO - [2025-09-06T22:05:01.830+0000] {dag.py:3490} INFO - Setting next_dagrun for orquestador to None, run_after=None
+[2025-09-06T22:05:01.848+0000] {processor.py:178} INFO - Processing /opt/airflow/dags/orquestador.py took 1.016 seconds
+[2025-09-06T22:05:31.980+0000] {processor.py:156} INFO - Started process (PID=145) to work on /opt/airflow/dags/orquestador.py
+[2025-09-06T22:05:31.982+0000] {processor.py:799} INFO - Processing file /opt/airflow/dags/orquestador.py for tasks to queue
+[2025-09-06T22:05:31.983+0000] {logging_mixin.py:149} INFO - [2025-09-06T22:05:31.982+0000] {dagbag.py:541} INFO - Filling up the DagBag from /opt/airflow/dags/orquestador.py
+[2025-09-06T22:05:32.804+0000] {processor.py:809} INFO - DAG(s) dict_keys(['orquestador']) retrieved from /opt/airflow/dags/orquestador.py
+[2025-09-06T22:05:32.837+0000] {logging_mixin.py:149} INFO - [2025-09-06T22:05:32.837+0000] {dag.py:2726} INFO - Sync 1 DAGs
+[2025-09-06T22:05:32.867+0000] {logging_mixin.py:149} INFO - [2025-09-06T22:05:32.866+0000] {dag.py:3490} INFO - Setting next_dagrun for orquestador to None, run_after=None
+[2025-09-06T22:05:32.886+0000] {processor.py:178} INFO - Processing /opt/airflow/dags/orquestador.py took 0.909 seconds
+[2025-09-06T22:06:03.034+0000] {processor.py:156} INFO - Started process (PID=161) to work on /opt/airflow/dags/orquestador.py
+[2025-09-06T22:06:03.036+0000] {processor.py:799} INFO - Processing file /opt/airflow/dags/orquestador.py for tasks to queue
+[2025-09-06T22:06:03.037+0000] {logging_mixin.py:149} INFO - [2025-09-06T22:06:03.037+0000] {dagbag.py:541} INFO - Filling up the DagBag from /opt/airflow/dags/orquestador.py
+[2025-09-06T22:06:03.932+0000] {processor.py:809} INFO - DAG(s) dict_keys(['orquestador']) retrieved from /opt/airflow/dags/orquestador.py
+[2025-09-06T22:06:03.967+0000] {logging_mixin.py:149} INFO - [2025-09-06T22:06:03.967+0000] {dag.py:2726} INFO - Sync 1 DAGs
+[2025-09-06T22:06:03.998+0000] {logging_mixin.py:149} INFO - [2025-09-06T22:06:03.998+0000] {dag.py:3490} INFO - Setting next_dagrun for orquestador to None, run_after=None
+[2025-09-06T22:06:04.030+0000] {processor.py:178} INFO - Processing /opt/airflow/dags/orquestador.py took 1.000 seconds
+[2025-09-06T22:06:34.254+0000] {processor.py:156} INFO - Started process (PID=178) to work on /opt/airflow/dags/orquestador.py
+[2025-09-06T22:06:34.256+0000] {processor.py:799} INFO - Processing file /opt/airflow/dags/orquestador.py for tasks to queue
+[2025-09-06T22:06:34.257+0000] {logging_mixin.py:149} INFO - [2025-09-06T22:06:34.257+0000] {dagbag.py:541} INFO - Filling up the DagBag from /opt/airflow/dags/orquestador.py
+[2025-09-06T22:06:35.298+0000] {processor.py:809} INFO - DAG(s) dict_keys(['orquestador']) retrieved from /opt/airflow/dags/orquestador.py
+[2025-09-06T22:06:35.334+0000] {logging_mixin.py:149} INFO - [2025-09-06T22:06:35.333+0000] {dag.py:2726} INFO - Sync 1 DAGs
+[2025-09-06T22:06:35.366+0000] {logging_mixin.py:149} INFO - [2025-09-06T22:06:35.366+0000] {dag.py:3490} INFO - Setting next_dagrun for orquestador to None, run_after=None
+[2025-09-06T22:06:35.389+0000] {processor.py:178} INFO - Processing /opt/airflow/dags/orquestador.py took 1.139 seconds
+[2025-09-06T22:07:05.460+0000] {processor.py:156} INFO - Started process (PID=200) to work on /opt/airflow/dags/orquestador.py
+[2025-09-06T22:07:05.462+0000] {processor.py:799} INFO - Processing file /opt/airflow/dags/orquestador.py for tasks to queue
+[2025-09-06T22:07:05.463+0000] {logging_mixin.py:149} INFO - [2025-09-06T22:07:05.462+0000] {dagbag.py:541} INFO - Filling up the DagBag from /opt/airflow/dags/orquestador.py
+[2025-09-06T22:07:06.367+0000] {processor.py:809} INFO - DAG(s) dict_keys(['orquestador']) retrieved from /opt/airflow/dags/orquestador.py
+[2025-09-06T22:07:06.401+0000] {logging_mixin.py:149} INFO - [2025-09-06T22:07:06.401+0000] {dag.py:2726} INFO - Sync 1 DAGs
+[2025-09-06T22:07:06.438+0000] {logging_mixin.py:149} INFO - [2025-09-06T22:07:06.438+0000] {dag.py:3490} INFO - Setting next_dagrun for orquestador to None, run_after=None
+[2025-09-06T22:07:06.464+0000] {processor.py:178} INFO - Processing /opt/airflow/dags/orquestador.py took 1.011 seconds
+[2025-09-06T22:08:01.139+0000] {processor.py:156} INFO - Started process (PID=58) to work on /opt/airflow/dags/orquestador.py
+[2025-09-06T22:08:01.141+0000] {processor.py:799} INFO - Processing file /opt/airflow/dags/orquestador.py for tasks to queue
+[2025-09-06T22:08:01.143+0000] {logging_mixin.py:149} INFO - [2025-09-06T22:08:01.143+0000] {dagbag.py:541} INFO - Filling up the DagBag from /opt/airflow/dags/orquestador.py
+[2025-09-06T22:08:02.712+0000] {processor.py:809} INFO - DAG(s) dict_keys(['orquestador']) retrieved from /opt/airflow/dags/orquestador.py
+[2025-09-06T22:08:02.878+0000] {logging_mixin.py:149} INFO - [2025-09-06T22:08:02.878+0000] {dag.py:2726} INFO - Sync 1 DAGs
+[2025-09-06T22:08:02.902+0000] {logging_mixin.py:149} INFO - [2025-09-06T22:08:02.902+0000] {dag.py:3490} INFO - Setting next_dagrun for orquestador to None, run_after=None
+[2025-09-06T22:08:02.920+0000] {processor.py:178} INFO - Processing /opt/airflow/dags/orquestador.py took 1.790 seconds
+[2025-09-06T22:08:33.123+0000] {processor.py:156} INFO - Started process (PID=84) to work on /opt/airflow/dags/orquestador.py
+[2025-09-06T22:08:33.125+0000] {processor.py:799} INFO - Processing file /opt/airflow/dags/orquestador.py for tasks to queue
+[2025-09-06T22:08:33.126+0000] {logging_mixin.py:149} INFO - [2025-09-06T22:08:33.126+0000] {dagbag.py:541} INFO - Filling up the DagBag from /opt/airflow/dags/orquestador.py
+[2025-09-06T22:08:33.986+0000] {processor.py:809} INFO - DAG(s) dict_keys(['orquestador']) retrieved from /opt/airflow/dags/orquestador.py
+[2025-09-06T22:08:34.120+0000] {logging_mixin.py:149} INFO - [2025-09-06T22:08:34.119+0000] {dag.py:2726} INFO - Sync 1 DAGs
+[2025-09-06T22:08:34.151+0000] {logging_mixin.py:149} INFO - [2025-09-06T22:08:34.150+0000] {dag.py:3490} INFO - Setting next_dagrun for orquestador to None, run_after=None
+[2025-09-06T22:08:34.172+0000] {processor.py:178} INFO - Processing /opt/airflow/dags/orquestador.py took 1.054 seconds
+[2025-09-06T22:09:04.330+0000] {processor.py:156} INFO - Started process (PID=98) to work on /opt/airflow/dags/orquestador.py
+[2025-09-06T22:09:04.332+0000] {processor.py:799} INFO - Processing file /opt/airflow/dags/orquestador.py for tasks to queue
+[2025-09-06T22:09:04.334+0000] {logging_mixin.py:149} INFO - [2025-09-06T22:09:04.334+0000] {dagbag.py:541} INFO - Filling up the DagBag from /opt/airflow/dags/orquestador.py
+[2025-09-06T22:09:06.114+0000] {processor.py:809} INFO - DAG(s) dict_keys(['orquestador']) retrieved from /opt/airflow/dags/orquestador.py
+[2025-09-06T22:09:06.146+0000] {logging_mixin.py:149} INFO - [2025-09-06T22:09:06.145+0000] {dag.py:2726} INFO - Sync 1 DAGs
+[2025-09-06T22:09:06.172+0000] {logging_mixin.py:149} INFO - [2025-09-06T22:09:06.171+0000] {dag.py:3490} INFO - Setting next_dagrun for orquestador to None, run_after=None
+[2025-09-06T22:09:06.198+0000] {processor.py:178} INFO - Processing /opt/airflow/dags/orquestador.py took 1.878 seconds
