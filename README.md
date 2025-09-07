@@ -1,291 +1,449 @@
-# MlOps_Taller 3
-Grupo compuesto por Sebastian Rodríguez y David Córdova
-# Taller: Predicción de Especies de Pingüinos con FastAPI y Docker
+# MLOps Taller 3 - Pipeline Automatizado con Airflow
 
-Este proyecto abarca desde el entrenamiento de modelos de **Machine Learning** con Jupyter, hasta el despliegue de una API REST con **FastAPI** que permite hacer predicciones sobre nuevas observaciones de pingüinos.
+**Grupo compuesto por Sebastian Rodríguez y David Córdova**
+
+Este proyecto implementa un pipeline completo de Machine Learning Operations (MLOps) que automatiza desde la limpieza de datos hasta el entrenamiento de modelos y despliegue de API, utilizando Apache Airflow como orquestador principal.
+
+## Características Principales
+
+- Pipeline completamente automatizado - Ejecución automática sin intervención manual
+- Orquestación con Apache Airflow - Gestión inteligente del flujo de trabajo
+- Contenerización completa - Docker Compose para todos los servicios
+- Base de datos MySQL - Almacenamiento persistente de datos
+- API FastAPI - Servicio de predicciones en tiempo real
+- Auto-trigger del DAG - Activación automática al iniciar el sistema
+- Monitoreo en tiempo real - Dashboard web de Airflow
 
 ## Estructura del Proyecto
 
-La estructura del proyecto está organizada en dos partes principales: **Jupyter** para la preparación de modelos y **API** para el despliegue y uso de los modelos entrenados.
-
 ```
-proyecto-pinguinos/
-├── api/
-│   ├── models/
+MLOps_Taller3/
+├── dags/
+│   ├── scripts/
+│   │   ├── __pycache__/
+│   │   ├── __init__.py
+│   │   ├── funciones.py
+│   │   └── queries.py
+│   ├── fastapi_ready.txt
+│   ├── fastapi.log
+│   └── orquestador.py
+├── fastapi/
+│   ├── __pycache__/
 │   ├── Dockerfile
 │   ├── main.py
-│   ├── pyproject.toml
-│   ├── README.md
-│   └── uv.lock
-├── Jupyter/
-│   ├── notebooks/
-│   ├── crea_modelos.py
-│   ├── limpieza.py
-│   ├── Dockerfile
-│   ├── pyproject.toml
-│   ├── README.md
-│   └── uv.lock
-── docker-compose.yml
-│  
-── models/
-
+│   └── requirements.txt
+├── logs/
+├── models/
+├── plugins/
+├── images/
+├── .env
+├── docker-compose.yaml
+└── README.md
+```
 
 ### Descripción de Componentes
 
-- **Jupyter**:
-  - **crea_modelos.py**: Script para la creación y entrenamiento de modelos, se puede desplegar en un notebook de Jupyter si es necesario.
-  - **limpieza.py**: Script para la limpieza y preparación de datos.
-  - **notebooks/**: Carpeta con notebooks para exploración de datos y análisis.
+- **dags/**:
+  - **orquestador.py**: DAG principal de Airflow que automatiza todo el pipeline de Machine Learning.
+  - **scripts/funciones.py**: Funciones principales del pipeline (insert_data, read_data, train_model).
+  - **scripts/queries.py**: Consultas SQL para creación y manipulación de tablas en MySQL.
+  - **fastapi_ready.txt**: Archivo de señal para indicar que FastAPI está listo.
+  - **fastapi.log**: Logs del servicio FastAPI.
 
-- **API**:
-  - **main.py**: Archivo principal para la implementación de la API con FastAPI.
-  - **models/**: Carpeta con los modelos entrenados en formato pickle.
-  - **Dockerfile**: Contenerización de la API.
-  - **pyproject.toml**: Dependencias y configuración del proyecto.
-  - **README.md**: Documentación de la API.
+- **fastapi/**:
+  - **main.py**: Aplicación principal de FastAPI que consume los modelos entrenados.
+  - **Dockerfile**: Contenerización del servicio API.
+  - **requirements.txt**: Dependencias específicas para el servicio FastAPI.
 
-- **docker-compose.yml**:  
-  Archivo de orquestación que define y gestiona los contenedores del proyecto.  
-  - Permite levantar de manera simultánea los servicios de **Jupyter** y de la **API**, conectándolos en la misma red interna.  
-  - Facilita el montaje de volúmenes para compartir los **modelos entrenados** entre Jupyter y la API.  
-  - Incluye la configuración de dependencias, variables de entorno y puertos expuestos para el acceso desde el host.
+- **logs/**:
+  - Directorio donde Airflow almacena todos los logs de ejecución de tareas y DAGs.
 
-- **models/**:  
-  Carpeta común ubicada en la raíz del proyecto que almacena los **modelos entrenados** en formato **pickle (.pkl)**.  
-  - Es compartida como volumen tanto por el contenedor de **Jupyter** como por el de la **API**, garantizando que los modelos entrenados puedan ser usados inmediatamente por la API sin necesidad de copiarlos manualmente.  
-  - Generalmente contiene archivos como:  
-    - `logistic_regression.pkl`  
-    - `decision_tree.pkl`  
-    - `knn.pkl`  
+- **models/**:
+  - Carpeta compartida que almacena los modelos entrenados en formato pickle (.pkl).
+  - Es montada como volumen en todos los contenedores que necesitan acceso a los modelos.
+  - Contiene archivos como: `RegresionLogistica.pkl`.
 
----
+- **plugins/**:
+  - Directorio para plugins personalizados de Airflow (vacío por defecto).
 
-## 1. Entrenamiento de Modelos (Jupyter)
+- **images/**:
+  - Carpeta para almacenar capturas de pantalla y evidencias del funcionamiento del sistema.
 
-En esta sección se encuentran los scripts que realizan la **limpieza de datos** y el **entrenamiento de modelos** de **Machine Learning**.
+- **.env**:
+  - Archivo de variables de entorno que configura automáticamente las credenciales de Airflow.
+  - Elimina la necesidad de configuración manual con credenciales predeterminadas (admin/admin).
 
-### Limpieza de Datos
-- **limpieza.py**: Realiza el preprocesamiento de los datos, como la eliminación de valores nulos y la codificación de variables categóricas.
-
-### Creación de Modelos
-- **crea_modelos.py**: Entrena modelos de clasificación (Regresión logística, Árbol de decisión y KNN) utilizando el conjunto de datos de **palmerpenguins**.  
-  Los modelos entrenados se guardan en la carpeta **models/** en formato **pickle**.
+- **docker-compose.yaml**:
+  - Archivo de orquestación que define y gestiona todos los contenedores del proyecto.
+  - Incluye servicios para: Airflow (webserver, scheduler, worker, triggerer), MySQL, Redis, PostgreSQL, FastAPI.
+  - Contiene el servicio `dag-auto-trigger` que ejecuta automáticamente el pipeline después del inicio.
+  - Facilita el montaje de volúmenes para compartir modelos y datos entre contenedores.
+  - Configura la red interna para comunicación entre servicios.
 
 ---
 
-## 2. Despliegue de Modelos (API)
+## Automatización Implementada
 
-La API implementada con **FastAPI** permite cargar los modelos previamente entrenados y exponer endpoints para realizar predicciones.
+### Por qué se automatizó
 
-- Los modelos se leen directamente desde la carpeta **models/**.
-- Se pueden consumir los endpoints para obtener predicciones de especies de pingüinos a partir de características como longitud y profundidad del pico, longitud de la aleta y masa corporal.
+**Problema original:**
+- Requería login manual en Airflow (`admin`/`admin`)
+- Necesitaba activar DAGs manualmente
+- Requería trigger manual del pipeline
+- Intervención humana en múltiples pasos
 
+**Solución automatizada:**
+- Zero-touch deployment - Una sola ejecución automatiza todo
+- Auto-activación de DAGs - Se activan automáticamente al iniciar
+- Auto-trigger del pipeline - Se ejecuta automáticamente una vez
+- Credenciales simplificadas - Admin/admin predeterminado
 
----
+### Componentes de Automatización
 
-## 3. Contenerización con Docker
+#### Archivo .env - Configuración Automática
 
-Tanto la parte de la **API** como la de **Jupyter** están creadas en un contenedor con docker desplegado mediante compose  para mayor facilidad.
-
-```
-
-### Dockerfile para Jupyter
-El archivo **Dockerfile** en la carpeta **Jupyter/** define el entorno para la creación de los modelos
-```dockerfile
-# Imagen base ligera de Python
-FROM python:3.12-slim
- 
-# Crear directorios
-RUN mkdir -p /bases_modelo /encoder
- 
-# Copiar dependencias
-COPY pyproject.toml uv.lock ./
- 
-# Instalar pip y uv
-RUN pip install --upgrade pip \
-&& pip install uv
- 
-# Instalar dependencias directamente en el sistema
-RUN uv pip install -r pyproject.toml --system
- 
-# Directorio de trabajo
-WORKDIR /app
- 
-# Copiar scripts
-COPY crea_modelos.py .
-COPY limpieza.py .
- 
-# Exponer puerto de Jupyter
-EXPOSE 8888
- 
-# Arrancar Jupyter con Python del sistema
-CMD ["jupyter", "lab", "--ip=0.0.0.0", "--port=8888", "--allow-root", "--NotebookApp.token="]
-```
-
-
-
-
-### Dockerfile para API
-El archivo **Dockerfile** en la carpeta **api/** define la imagen para que corra la aplicación que consume los modelos.
-```dockerfile
-# Imagen base
-FROM python:3.12-slim
-
-# Directorio de trabajo dentro del contenedor
-WORKDIR /app
-RUN mkdir /models
-
-# Copiamos pyproject.toml y el lockfile de uv
-COPY pyproject.toml uv.lock ./
-
-# Instalamos uv
-RUN pip install --upgrade pip \
-    && pip install uv
-
-RUN uv sync --frozen
-
-COPY . .
-
-# Exponemos el puerto de Uvicorn 
-EXPOSE 9999
-
-# Comando para levantar tu API con Uvicorn usando uv
-# Ajusta main:app según tu archivo FastAPI
-CMD ["uv", "run", "uvicorn", "main:app", "--host", "0.0.0.0", "--port", "9999"]
-```
----
-
-## Ejecución del Proyecto
-
-1. **Levantamiento de la aplicación**:
 ```bash
-docker compose down -v
-docker compose build
-docker compose up
+# Variables de entorno para automatización
+AIRFLOW_UID=50000
+_AIRFLOW_WWW_USER_USERNAME=admin
+_AIRFLOW_WWW_USER_PASSWORD=admin
+AIRFLOW_PROJ_DIR=.
 ```
-API → http://localhost:9999/docs
 
-Jupyter Notebook → http://localhost:8888
+**Función:** Elimina la necesidad de configuración manual de credenciales.
 
+#### docker-compose.yaml - Orquestación Automática
 
+**Características de automatización implementadas:**
 
+```yaml
+# DAGs activos por defecto (sin intervención manual)
+AIRFLOW__CORE__DAGS_ARE_PAUSED_AT_CREATION: 'false'
 
+# Detección rápida de cambios en DAGs
+AIRFLOW__SCHEDULER__DAG_DIR_LIST_INTERVAL: 30
+AIRFLOW__SCHEDULER__PARSING_PROCESSES: 2
+```
 
-2. **Verificación de los modelos**:
+**Servicio de Auto-Trigger integrado:**
+```yaml
+dag-auto-trigger:
+  command: >
+    bash -c "
+      echo 'Iniciando auto-trigger del DAG...'
+      sleep 120
+      echo 'Activando DAG orquestador...'
+      airflow dags unpause orquestador || echo 'DAG ya está activo'
+      echo 'Disparando ejecución del DAG...'
+      airflow dags trigger orquestador
+      echo 'DAG disparado exitosamente!'
+    "
+```
 
-![modelos_iniciales](./imagenes/modelos_iniciales.png)
-*Figura 1: Verificación de los modelos iniciales antes del entrenamiento*
+**Función:** Ejecuta automáticamente el pipeline 2 minutos después del inicio completo.
 
-3. **Entorno de gestión de datos y entrenamiento de modelos**:
+#### DAG Modificado - orquestador.py
 
-![Entorno de Jupyter](./imagenes/JupyterLab.png)
-Figura 2: Verificación de del entorno de jupyter lab*
+**Configuración para auto-activación:**
+```python
+with DAG(
+    dag_id="orquestador",
+    schedule_interval=None,          # Ejecución controlada automáticamente
+    catchup=False,
+    is_paused_upon_creation=False,   # CLAVE: DAG activo desde creación
+    tags=['ml', 'penguins', 'auto-execution']
+) as dag:
+```
 
+**Función:** Garantiza que el DAG esté listo para ejecución automática.
 
-2. **Ejecución del código para la limpieza y transformación de dataset**:
+## Flujo del Pipeline Automatizado
 
-![Limpieza y transformación de datos](./imagenes/LimpiezaPYfuncionando.png)
-Figura 3: Limpieza y transformación de los datos*
+### Secuencia de Ejecución Automática:
 
-4. **Entrenamiento y almacenamiento del modelo de clasificación**:
+1. docker-compose up
+2. Servicios iniciando (MySQL + Redis + PostgreSQL)
+3. Airflow Webserver + Scheduler
+4. DAG auto-activo
+5. Auto-trigger después de 120 segundos
+6. Pipeline ML ejecutándose automáticamente
 
-![Entrenamiento](./imagenes/Modelosecreaexitosamente.png)
-Figura 4: Entrenamiento del modelo*
+### Tareas del DAG:
 
-5. **Verificación de los modelos disponibles en FASTAPI**:
+1. **delete_table** - Limpia tabla anterior de datos raw
+2. **delete_table_clean** - Limpia tabla anterior de datos procesados  
+3. **create_table_raw** - Crea tabla para datos originales
+4. **create_table_clean** - Crea tabla para datos limpios
+5. **insert_penguins** - Carga dataset Palmer Penguins a MySQL
+6. **read_data** - Lee y procesa datos desde MySQL
+7. **train_model** - Entrena modelo de Regresión Logística
+8. **wait_for_model_file** - Verifica que modelo esté guardado
+9. **pipeline_completion** - Confirma finalización exitosa
 
-![Modelos](./imagenes/Modelo_disponible_en_API.png)
-Figura 5: Modelos disponibles
+## Instrucciones de Ejecución
 
+### Preparación Inicial
 
-6. **Predicción usando el modelo generado en JupyterLab**:
+```bash
+# Clonar el repositorio
+git clone https://github.com/DAVID316CORDOVA/MLOps_Taller3.git
+cd MLOps_Taller3
 
-![Modelos](./imagenes/Modelo_seleccionado_predice_correctamente.png)
-Figura 6: Predicción del modelo
+# Limpiar entorno previo (si existe)
+docker-compose down -v
+docker system prune -f
+```
 
+### Ejecución Completamente Automática (Recomendado)
 
+```bash
+# Después de la preparación inicial, simplemente:
+docker-compose up
+```
 
-### Programas usados para la limpieza de los datos y el entrenamiento del modeo en Jupyter
+**Qué sucede automáticamente:**
+- Se crean todos los contenedores necesarios
+- Airflow inicia con credenciales admin/admin
+- DAG se activa automáticamente
+- Pipeline se ejecuta una vez automáticamente después de 2 minutos
+- FastAPI queda disponible con modelo entrenado
 
-1. **Script de limpieza  y transformación de datos**:
- ```python
- import palmerpenguins as pp
-import pandas as pd
-import joblib
-import numpy as np
-from sklearn.preprocessing import LabelEncoder
-from sklearn.model_selection import train_test_split
-from sklearn.ensemble import RandomForestClassifier
-from sklearn.metrics import accuracy_score, classification_report
-from sklearn.metrics import confusion_matrix, ConfusionMatrixDisplay
-from sklearn.preprocessing import OneHotEncoder
+### Ejecución en Background
 
-df = pp.load_penguins()
-df.head()
-df[df.isna().any(axis=1)]
-df.dropna(inplace=True)
-categorical_cols = ['sex','island']
-encoder = OneHotEncoder( handle_unknown='ignore')
-x = df.drop(columns=['species'])
-y = df['species']
-x_encoded = encoder.fit_transform(x[categorical_cols])
-X_numeric = x.drop(columns=categorical_cols)
-X_final = np.hstack((X_numeric.values, x_encoded.toarray()))
+```bash
+# Para ejecutar en segundo plano
+docker-compose up -d
 
-df_encoded = pd.get_dummies(df, columns=['island','sex'])
-bool_cols = df_encoded.select_dtypes(include='bool').columns
-df_encoded[bool_cols] = df_encoded[bool_cols].astype(int)
-df_encoded.head()
-df_encoded['species'] = df_encoded['species'].apply(lambda x: 
-1 if x == 'Adelie' else 
-2 if x == 'Chinstrap' else 
-3 if x == 'Gentoo' else 
-None)
-df_encoded.to_csv('/bases_modelo/base_penguin.csv', index = False)
-print('Base exportada con éxito')
+# Ver logs en tiempo real
+docker-compose logs -f dag-auto-trigger
+```
 
-   ```
+### Verificación Manual del Estado
 
-2. **Script de entrenamiento de los modelos de clasificación**:
-   
- ```python
- import pandas as pd
-import joblib
-import numpy as np
-from sklearn.preprocessing import LabelEncoder
-from sklearn.model_selection import train_test_split
-from sklearn.ensemble import RandomForestClassifier
-from sklearn.linear_model import LogisticRegression  # Modelo regresión logística.
-from sklearn.neighbors import KNeighborsClassifier  # Modelo KNN.
-from sklearn.tree import DecisionTreeClassifier  # Árbol de decisión.
-from sklearn.metrics import accuracy_score, classification_report
-from sklearn.metrics import confusion_matrix, ConfusionMatrixDisplay
-from sklearn.preprocessing import OneHotEncoder
+```bash
+# Verificar que Airflow esté disponible
+curl -f http://localhost:8080/health
 
-df = pd.read_csv('/bases_modelo/base_penguin.csv')
-df = pd.DataFrame(df)
-X = df.drop('species', axis=1)
-Y = df['species']
-X_train, X_test, Y_train, Y_test = train_test_split(
-    X, Y, test_size=0.2, random_state=42)
+# Verificar estado de contenedores
+docker-compose ps
 
-model = KNeighborsClassifier()
-model.fit(X_train, Y_train)
-y_pred = model.predict(X_test)
-print("Accuracy:", accuracy_score(Y_test, y_pred))
-joblib.dump(model, '/models/KNeighborsClassifier.pkl')
-print('Modelo Exportado Exitosamente')
+# Acceder a la interfaz web
+# http://localhost:8080 (admin/admin)
+```
 
-   ```
+## Acceso a Servicios
 
-3. **Se guardan los modelos dentro del container para que la API los pueda consumir**:
+| Servicio | URL | Credenciales | Descripción |
+|----------|-----|--------------|-------------|
+| **Airflow Web** | http://localhost:8080 | admin/admin | Dashboard del pipeline |
+| **FastAPI Docs** | http://localhost:8000/docs | - | API de predicciones |
+| **MySQL** | localhost:3306 | my_app_user/my_app_pass | Base de datos |
+| **Flower (opcional)** | http://localhost:5555 | - | Monitor de Celery |
 
+## Evidencia Visual
 
+### Inicio Automático del Sistema
+
+*Espacio reservado para imagen de docker-compose up ejecutándose*
+
+![Inicio del sistema](./images/docker_compose_startup.png)
+
+### Dashboard de Airflow - DAG Auto-Activo
+
+*Espacio reservado para imagen del DAG activo automáticamente*
+
+![DAG Activo](./images/airflow_dag_active.png)
+
+### Ejecución Automática del Pipeline
+
+*Espacio reservado para imagen del pipeline ejecutándose*
+
+![Pipeline Ejecutando](./images/pipeline_running.png)
+
+### Tareas Completadas Exitosamente
+
+*Espacio reservado para imagen de todas las tareas verdes*
+
+![Tareas Completadas](./images/tasks_completed.png)
+
+### Modelo Generado Automáticamente
+
+*Espacio reservado para imagen del archivo .pkl creado*
+
+![Modelo Creado](./images/model_created.png)
+
+### FastAPI Funcionando con Modelo
+
+*Espacio reservado para imagen de FastAPI docs con predicción*
+
+![FastAPI Funcionando](./images/fastapi_working.png)
+
+### Predicción Exitosa
+
+*Espacio reservado para imagen de predicción exitosa*
+
+![Predicción Exitosa](./images/prediction_success.png)
+
+## Funciones Técnicas Implementadas
+
+### funciones.py - Lógica del Pipeline
+
+```python
+def insert_data():
+    """Carga datos Palmer Penguins a MySQL"""
+    # Carga dataset palmerpenguins
+    # Limpia valores nulos
+    # Inserta datos en tabla MySQL raw
+
+def read_data():
+    """Lee y procesa datos desde MySQL"""
+    # Conecta a base de datos MySQL
+    # Lee datos de tabla raw
+    # Aplica transformaciones y limpieza
+    # Guarda datos procesados en tabla clean
+
+def train_model():
+    """Entrena modelo de clasificación"""
+    # Carga datos procesados desde MySQL
+    # Prepara features y target
+    # Entrena modelo de Regresión Logística
+    # Guarda modelo en /opt/airflow/models/RegresionLogistica.pkl
+```
+
+### queries.py - Consultas SQL
+
+```sql
+CREATE_PENGUINS_TABLE_RAW = """
+    CREATE TABLE IF NOT EXISTS penguins_raw (
+        species VARCHAR(50),
+        island VARCHAR(50),
+        bill_length_mm FLOAT,
+        bill_depth_mm FLOAT,
+        flipper_length_mm FLOAT,
+        body_mass_g INT,
+        sex VARCHAR(10)
+    )
+"""
+
+CREATE_PENGUINS_TABLE_CLEAN = """
+    CREATE TABLE IF NOT EXISTS penguins_clean (
+        species INT,
+        island_biscoe INT,
+        island_dream INT,
+        island_torgersen INT,
+        bill_length_mm FLOAT,
+        bill_depth_mm FLOAT,
+        flipper_length_mm FLOAT,
+        body_mass_g INT,
+        sex_female INT,
+        sex_male INT
+    )
+"""
+```
+
+## Beneficios de la Automatización
+
+| **Antes (Manual)** | **Después (Automatizado)** |
+|--------------------|-----------------------------|
+| Login manual requerido | Acceso automático con admin/admin |
+| Activar DAGs manualmente | DAGs activos automáticamente |
+| Trigger manual del pipeline | Auto-ejecución programada |
+| 5-7 pasos manuales | 1 comando: `docker-compose up` |
+| Propenso a errores humanos | Proceso consistente y repetible |
+| Tiempo: ~10-15 minutos | Tiempo: ~3-5 minutos sin intervención |
+
+## Troubleshooting
+
+### Problema: DAG no se ejecuta automáticamente
+```bash
+# Verificar que el servicio auto-trigger se ejecutó
+docker-compose logs dag-auto-trigger
+
+# Ejecutar manualmente si es necesario
+docker exec -it $(docker-compose ps -q airflow-scheduler) airflow dags trigger orquestador
+```
+
+### Problema: Error de permisos
+```bash
+# Establecer AIRFLOW_UID correcto
+echo "AIRFLOW_UID=$(id -u)" > .env
+docker-compose down -v
+docker-compose up
+```
+
+### Problema: MySQL no conecta
+```bash
+# Verificar que MySQL esté corriendo
+docker-compose ps mysql
+
+# Verificar logs
+docker-compose logs mysql
+```
+
+### Problema: Puertos ocupados
+```bash
+# Verificar puertos en uso
+netstat -tlnp | grep -E '8080|8000|3306'
+
+# Detener otros servicios si es necesario
+docker-compose down
+sudo systemctl stop mysql  # Si MySQL local está corriendo
+```
 
 ## Tecnologías Utilizadas
 
-- **Machine Learning**: scikit-learn, pandas, numpy
-- **API Framework**: FastAPI, Pydantic, Uvicorn
-- **Contenerización**: Docker, Docker Compose
-- **Data Source**: palmerpenguins dataset
-- **Serialización**: pickle para persistencia de modelos
+| Categoría | Tecnología | Propósito |
+|-----------|------------|-----------|
+| **Orquestación** | Apache Airflow 2.6.0 | Pipeline automation |
+| **Contenerización** | Docker + Docker Compose | Service orchestration |
+| **Base de Datos** | MySQL 8.0 | Data persistence |
+| **Cache/Queue** | Redis + PostgreSQL | Airflow backend |
+| **API Framework** | FastAPI + Uvicorn | Model serving |
+| **ML Libraries** | scikit-learn, pandas | Model training |
+| **Task Queue** | Celery | Distributed task execution |
+
+## Logs y Monitoreo
+
+### Ubicación de Logs:
+- **Airflow Logs:** `./logs/`
+- **FastAPI Logs:** `./dags/fastapi.log`
+- **Container Logs:** `docker-compose logs [service-name]`
+
+### Comandos de Monitoreo:
+```bash
+# Ver logs en tiempo real de todos los servicios
+docker-compose logs -f
+
+# Ver logs específicos de un servicio
+docker-compose logs airflow-scheduler
+docker-compose logs fastapi
+docker-compose logs mysql
+docker-compose logs dag-auto-trigger
+
+# Verificar estado de contenedores
+docker-compose ps
+
+# Ver uso de recursos
+docker stats
+```
+
+## Conclusiones
+
+Este proyecto demuestra una implementación exitosa de MLOps con automatización completa:
+
+1. **Pipeline End-to-End:** Desde datos raw hasta modelo productivo
+2. **Zero-Touch Deployment:** Una ejecución automatiza todo el proceso
+3. **Escalabilidad:** Arquitectura preparada para múltiples modelos
+4. **Monitoreo:** Dashboard web para seguimiento en tiempo real
+5. **Reproducibilidad:** Proceso completamente documentado y repetible
+
+La automatización elimina errores humanos y reduce significativamente el tiempo de despliegue, estableciendo una base sólida para operaciones de Machine Learning en producción.
+
+---
+
+**Desarrollado por:**
+- Sebastian Rodríguez
+- David Córdova
+
+**Proyecto:** MLOps Taller 3 - Pipeline Automatizado  
+**Fecha:** Septiembre 2025
