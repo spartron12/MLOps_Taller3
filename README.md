@@ -243,31 +243,22 @@ docker-compose ps
 ## Ejecución del Proyecto
 
 ### 1. Levantamiento de la aplicación
-
 ![Inicio del sistema](./images/compose.jpg)
 
-
 ### 2. Login de Airflow
-
 ![Inicio del sistema](./images/login.jpg)
 
-
 ### 3. Ejecución Automática del Pipeline - DAG Auto-Activo
-
 ![Inicio del sistema](./images/dag.jpg)
 
 ## 4. Visualización todos los tasks de Airflow ejecutándose automaticamente
-
 ![Inicio del sistema](./images/orquesta.jpg)
 
-
 ## 5. Visualización del correcto funcionamiento de la interfaz gráfica de FASTAPI 
-
 ![Inicio del sistema](./images/fastapi.jpg)
 
 
 ## 6. Predicción usando el modelo generado automáticamente por AirFlow
-
 ![Inicio del sistema](./images/fastapi_prediction.jpg)
 
 
@@ -355,58 +346,7 @@ CREATE_PENGUINS_TABLE_CLEAN = """ CREATE TABLE penguins_clean (
 
 ```
 
-## Beneficios de la Automatización
-
-| **Antes (Manual)** | **Después (Automatizado)** |
-|--------------------|-----------------------------|
-| Login manual requerido | Acceso automático con admin/admin |
-| Activar DAGs manualmente | DAGs activos automáticamente |
-| Trigger manual del pipeline | Auto-ejecución programada |
-| 5-7 pasos manuales | 1 comando: `docker-compose up` |
-| Propenso a errores humanos | Proceso consistente y repetible |
-| Tiempo: ~10-15 minutos | Tiempo: ~3-5 minutos sin intervención |
-
-## Troubleshooting
-
-### Problema: DAG no se ejecuta automáticamente
-```bash
-# Verificar que el servicio auto-trigger se ejecutó
-docker-compose logs dag-auto-trigger
-
-# Ejecutar manualmente si es necesario
-docker exec -it $(docker-compose ps -q airflow-scheduler) airflow dags trigger orquestador
-```
-
-### Problema: Error de permisos
-```bash
-# Establecer AIRFLOW_UID correcto
-echo "AIRFLOW_UID=$(id -u)" > .env
-docker-compose down -v
-docker-compose up
-```
-
-### Problema: MySQL no conecta
-```bash
-# Verificar que MySQL esté corriendo
-docker-compose ps mysql
-
-# Verificar logs
-docker-compose logs mysql
-```
-
-### Problema: Puertos ocupados
-```bash
-# Verificar puertos en uso
-netstat -tlnp | grep -E '8080|8000|3306'
-
-# Detener otros servicios si es necesario
-docker-compose down
-sudo systemctl stop mysql  # Si MySQL local está corriendo
-```
-
-
-
-## ⚡ Automatización del DAG
+##  Automatización del DAG
 
 Para evitar activar y ejecutar manualmente el DAG desde la interfaz de Airflow, se agregó un servicio especial en el `docker-compose.yml` llamado **`dag-auto-trigger`**.  
 
@@ -424,7 +364,7 @@ Este servicio:
 
 ---
 
-## 🔗 Conexiones Configuradas en Airflow
+##  Conexiones Configuradas en Airflow
 
 En el archivo `docker-compose.yml` se declararon conexiones globales en las variables de entorno de Airflow. Esto simplifica el uso de **hooks** y **operadores** dentro de los DAGs:
 
@@ -442,15 +382,12 @@ En el archivo `docker-compose.yml` se declararon conexiones globales en las vari
 
 ---
 
-## 🚀 Beneficios
+## Beneficios
 
 - DAG siempre inicia activo y ejecutado en la primera corrida.  
 - Configuración de conexiones centralizada y reutilizable.  
 - Menor riesgo de errores manuales en producción.  
 - Todo listo con **un solo comando**:  
-
-
-
 
 
 
