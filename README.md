@@ -240,68 +240,36 @@ docker-compose ps
 | **MySQL** | localhost:3306 | my_app_user/my_app_pass | Base de datos |
 | **Flower (opcional)** | http://localhost:5555 | - | Monitor de Celery |
 
-## Evidencia Visual
+## Ejecución del Proyecto
 
-### Inicio Automático del Sistema
+### 1. Levantamiento de la aplicación
 
 ![Inicio del sistema](./images/compose.jpg)
+
+
+### 2. Login de Airflow
 
 ![Inicio del sistema](./images/login.jpg)
 
 
-### Dashboard de Airflow - DAG Auto-Activo
-
-
-### Ejecución Automática del Pipeline
+### 3. Ejecución Automática del Pipeline - DAG Auto-Activo
 
 ![Inicio del sistema](./images/dag.jpg)
 
+## 4. Visualización todos los tasks de Airflow ejecutándose automaticamente
 
 ![Inicio del sistema](./images/orquesta.jpg)
 
 
+## 5. Visualización del correcto funcionamiento de la interfaz gráfica de FASTAPI 
+
 ![Inicio del sistema](./images/fastapi.jpg)
 
 
+## 6. Predicción usando el modelo generado automáticamente por AirFlow
+
 ![Inicio del sistema](./images/fastapi_prediction.jpg)
 
-![Inicio del sistema](./images/docker_compose_startup.png)
-
-
-
-*Espacio reservado para imagen del DAG activo automáticamente*
-
-![DAG Activo](./images/airflow_dag_active.png)
-
-
-
-*Espacio reservado para imagen del pipeline ejecutándose*
-
-![Pipeline Ejecutando](./images/pipeline_running.png)
-
-### Tareas Completadas Exitosamente
-
-*Espacio reservado para imagen de todas las tareas verdes*
-
-![Tareas Completadas](./images/tasks_completed.png)
-
-### Modelo Generado Automáticamente
-
-*Espacio reservado para imagen del archivo .pkl creado*
-
-![Modelo Creado](./images/model_created.png)
-
-### FastAPI Funcionando con Modelo
-
-*Espacio reservado para imagen de FastAPI docs con predicción*
-
-![FastAPI Funcionando](./images/fastapi_working.png)
-
-### Predicción Exitosa
-
-*Espacio reservado para imagen de predicción exitosa*
-
-![Predicción Exitosa](./images/prediction_success.png)
 
 ## Funciones Técnicas Implementadas
 
