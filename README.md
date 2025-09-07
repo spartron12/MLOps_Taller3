@@ -277,24 +277,40 @@ docker-compose ps
 
 ```python
 def insert_data():
-    """Carga datos Palmer Penguins a MySQL"""
-    # Carga dataset palmerpenguins
-    # Limpia valores nulos
-    # Inserta datos en tabla MySQL raw
+    """Inserta datos de Palmer Penguins en MySQL"""
+    # Carga dataset Palmer Penguins
+    # Limpia valores nulos y NaN
+    # Inserta registros en tabla MySQL `penguins_raw`
+
+def clean(df):
+    """Limpia y transforma los datos"""
+    # Elimina registros con valores nulos
+    # Aplica One-Hot Encoding para variables categóricas (island, sex)
+    # Convierte columnas booleanas a enteros
+    # Transforma species a valores numéricos (1=Adelie, 2=Chinstrap, 3=Gentoo)
+    # Retorna DataFrame listo para almacenar en `penguins_clean`
 
 def read_data():
     """Lee y procesa datos desde MySQL"""
-    # Conecta a base de datos MySQL
-    # Lee datos de tabla raw
-    # Aplica transformaciones y limpieza
-    # Guarda datos procesados en tabla clean
+    # Extrae registros desde tabla `penguins_raw`
+    # Aplica limpieza y codificación con `clean()`
+    # Inserta datos transformados en tabla `penguins_clean`
 
 def train_model():
-    """Entrena modelo de clasificación"""
-    # Carga datos procesados desde MySQL
-    # Prepara features y target
-    # Entrena modelo de Regresión Logística
-    # Guarda modelo en /opt/airflow/models/RegresionLogistica.pkl
+    """Entrena y guarda un modelo de Regresión Logística"""
+    # Carga datos desde tabla `penguins_clean`
+    # Divide dataset en entrenamiento y prueba
+    # Entrena modelo de clasificación
+    # Evalúa desempeño con métricas (accuracy, confusion matrix, classification report)
+    # Guarda modelo en `/opt/airflow/models/RegresionLogistica.pkl`
+
+def start_fastapi_server():
+    """Prepara entorno FastAPI para servir el modelo"""
+    # Verifica existencia del modelo entrenado
+    # Configura aplicación FastAPI ubicada en `/opt/airflow/dags/fastapi_app.py`
+    # Genera archivo de estado `fastapi_ready.txt`
+    # Sugiere comando de despliegue con uvicorn
+
 ```
 
 ### queries.py - Consultas SQL
@@ -308,24 +324,27 @@ CREATE_PENGUINS_TABLE_RAW = """
         bill_depth_mm FLOAT,
         flipper_length_mm FLOAT,
         body_mass_g INT,
-        sex VARCHAR(10)
+        sex VARCHAR(10),
+        year INT
     )
 """
 
 CREATE_PENGUINS_TABLE_CLEAN = """
     CREATE TABLE IF NOT EXISTS penguins_clean (
         species INT,
-        island_biscoe INT,
-        island_dream INT,
-        island_torgersen INT,
         bill_length_mm FLOAT,
         bill_depth_mm FLOAT,
         flipper_length_mm FLOAT,
         body_mass_g INT,
+        year INT,
+        island_Biscoe INT,
+        island_Dream INT,
+        island_Torgersen INT,
         sex_female INT,
         sex_male INT
     )
 """
+
 ```
 
 ## Beneficios de la Automatización
