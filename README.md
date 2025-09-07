@@ -242,9 +242,12 @@ docker-compose ps
 
 ## Evidencia Visual
 
-### Inicio Automático del Sistema
+### Ejecución de la aplicación
 
 ![Inicio del sistema](./images/compose.jpg)
+
+
+### Login de Airflow
 
 ![Inicio del sistema](./images/login.jpg)
 
@@ -252,9 +255,11 @@ docker-compose ps
 ### Dashboard de Airflow - DAG Auto-Activo
 
 
-### Ejecución Automática del Pipeline
+### Ejecución Automática del Pipeline - DAG Auto-Activo
 
 ![Inicio del sistema](./images/dag.jpg)
+
+## Visualización todos los tasks de Airflow ejecutándose automaticamente
 
 
 ![Inicio del sistema](./images/orquesta.jpg)
