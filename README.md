@@ -316,33 +316,42 @@ def start_fastapi_server():
 ### queries.py - Consultas SQL
 
 ```sql
-CREATE_PENGUINS_TABLE_RAW = """
-    CREATE TABLE IF NOT EXISTS penguins_raw (
-        species VARCHAR(50),
-        island VARCHAR(50),
-        bill_length_mm FLOAT,
-        bill_depth_mm FLOAT,
-        flipper_length_mm FLOAT,
-        body_mass_g INT,
-        sex VARCHAR(10),
-        year INT
-    )
+DROP_PENGUINS_TABLE = """
+DROP TABLE IF EXISTS penguins_raw;
+
 """
 
-CREATE_PENGUINS_TABLE_CLEAN = """
-    CREATE TABLE IF NOT EXISTS penguins_clean (
-        species INT,
-        bill_length_mm FLOAT,
-        bill_depth_mm FLOAT,
-        flipper_length_mm FLOAT,
-        body_mass_g INT,
-        year INT,
-        island_Biscoe INT,
-        island_Dream INT,
-        island_Torgersen INT,
-        sex_female INT,
-        sex_male INT
-    )
+DROP_PENGUINS_CLEAN_TABLE = """
+DROP TABLE IF EXISTS penguins_clean;            
+ """
+
+
+CREATE_PENGUINS_TABLE_RAW = """ CREATE TABLE penguins_raw (
+            species VARCHAR(50) NULL,
+            island VARCHAR(50) NULL,
+            bill_length_mm DOUBLE NULL,
+            bill_depth_mm DOUBLE NULL,
+            flipper_length_mm DOUBLE NULL,
+            body_mass_g DOUBLE NULL,
+            sex VARCHAR(10) NULL,
+            year INT NULL
+        )
+        """
+
+CREATE_PENGUINS_TABLE_CLEAN = """ CREATE TABLE penguins_clean (
+    species INT NULL,
+    bill_length_mm DOUBLE NULL,
+    bill_depth_mm DOUBLE NULL,
+    flipper_length_mm DOUBLE NULL,
+    body_mass_g DOUBLE NULL,
+    year INT NULL,
+    island_Biscoe INT NULL,
+    island_Dream INT NULL,
+    island_Torgersen INT NULL,
+    sex_female INT NULL,
+    sex_male INT NULL
+        );      
+        """
 """
 
 ```
