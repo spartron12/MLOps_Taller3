@@ -248,6 +248,19 @@ docker-compose ps
 
 ![Inicio del sistema](./images/compose.jpg)
 
+![Inicio del sistema](./images/login.jpg)
+
+
+![Inicio del sistema](./images/dag.jpg)
+
+
+![Inicio del sistema](./images/orquesta.jpg)
+
+
+![Inicio del sistema](./images/fastapi.jpg)
+
+
+![Inicio del sistema](./images/fastapi_prediction.jpg)
 
 ![Inicio del sistema](./images/docker_compose_startup.png)
 
