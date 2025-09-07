@@ -404,6 +404,60 @@ docker-compose down
 sudo systemctl stop mysql  # Si MySQL local está corriendo
 ```
 
+
+
+## ⚡ Automatización del DAG
+
+Para evitar activar y ejecutar manualmente el DAG desde la interfaz de Airflow, se agregó un servicio especial en el `docker-compose.yml` llamado **`dag-auto-trigger`**.  
+
+Este servicio:
+- Espera 120 segundos para garantizar que Airflow esté completamente iniciado.
+- Despausa automáticamente el DAG **`orquestador`**.
+- Lanza su primera ejecución sin intervención manual.
+
+| **Antes (Manual)** | **Después (Automatizado)** |
+|--------------------|-----------------------------|
+| Activar DAG en la UI | DAG activo automáticamente |
+| Trigger manual | Auto-trigger inicial |
+| 3–4 pasos manuales | 1 comando: `docker-compose up` |
+| Riesgo de olvidos | Proceso 100% confiable |
+
+---
+
+## 🔗 Conexiones Configuradas en Airflow
+
+En el archivo `docker-compose.yml` se declararon conexiones globales en las variables de entorno de Airflow. Esto simplifica el uso de **hooks** y **operadores** dentro de los DAGs:
+
+### Conexión a MySQL
+`AIRFLOW_CONN_MYSQL_CONN = 'mysql://my_app_user:my_app_pass@mysql:3306/my_app_db'`  
+
+- Permite que `MySqlHook` y `MySqlOperator` se conecten directamente a la base de datos.  
+- Evita hardcodear credenciales dentro de los DAGs.  
+
+### Conexión para FileSensor
+`AIRFLOW_CONN_FS_DEFAULT = 'fs:///'`  
+
+- Usada por `FileSensor` para monitorear archivos en el sistema.  
+- Útil en pipelines basados en llegada de archivos (CSV, parquet, etc.).  
+
+---
+
+## 🚀 Beneficios
+
+- DAG siempre inicia activo y ejecutado en la primera corrida.  
+- Configuración de conexiones centralizada y reutilizable.  
+- Menor riesgo de errores manuales en producción.  
+- Todo listo con **un solo comando**:  
+
+
+
+
+
+
+
+
+
+
 ## Tecnologías Utilizadas
 
 | Categoría | Tecnología | Propósito |
