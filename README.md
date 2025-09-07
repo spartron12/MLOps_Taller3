@@ -168,7 +168,7 @@ docker compose down -v
 docker system prune -f
 
 # Ejecutar pipeline completo
-docker-compose up
+docker compose up
 ```
 
 ### Monitoreo Opcional
