@@ -135,7 +135,7 @@ dag-auto-trigger:
 
 **Función:** Ejecuta automáticamente el pipeline 2 minutos después del inicio completo.
 
-````markdown
+
 ## 🔌 Conexiones Configuradas
 
 ### 🐬 MySQL
@@ -156,7 +156,7 @@ AIRFLOW_CONN_FS_DEFAULT: 'fs:///'
 * Útil para pipelines basados en llegada de archivos
 
 ```
-```
+
 
 
 
