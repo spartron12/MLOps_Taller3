@@ -77,7 +77,7 @@ MLOps_Taller3/
 
 ## Automatización Implementada
 
-### Por qué se automatizó
+### ¿Por qué se automatizó?
 
 **Problema original:**
 - Requería login manual en Airflow (`admin`/`admin`)
