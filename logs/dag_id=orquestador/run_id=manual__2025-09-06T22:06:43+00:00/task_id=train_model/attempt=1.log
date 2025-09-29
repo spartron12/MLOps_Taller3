@@ -1,0 +1,24 @@
+[2025-09-06T22:06:55.205+0000] {taskinstance.py:1125} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: orquestador.train_model manual__2025-09-06T22:06:43+00:00 [queued]>
+[2025-09-06T22:06:55.221+0000] {taskinstance.py:1125} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: orquestador.train_model manual__2025-09-06T22:06:43+00:00 [queued]>
+[2025-09-06T22:06:55.221+0000] {taskinstance.py:1331} INFO - Starting attempt 1 of 1
+[2025-09-06T22:06:55.241+0000] {taskinstance.py:1350} INFO - Executing <Task(PythonOperator): train_model> on 2025-09-06 22:06:43+00:00
+[2025-09-06T22:06:55.252+0000] {standard_task_runner.py:57} INFO - Started process 180 to run task
+[2025-09-06T22:06:55.256+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'orquestador', 'train_model', 'manual__2025-09-06T22:06:43+00:00', '--job-id', '17', '--raw', '--subdir', 'DAGS_FOLDER/orquestador.py', '--cfg-path', '/tmp/tmpg0ear6e1']
+[2025-09-06T22:06:55.259+0000] {standard_task_runner.py:85} INFO - Job 17: Subtask train_model
+[2025-09-06T22:06:55.329+0000] {task_command.py:410} INFO - Running <TaskInstance: orquestador.train_model manual__2025-09-06T22:06:43+00:00 [running]> on host b0f46732fbd8
+[2025-09-06T22:06:55.450+0000] {taskinstance.py:1570} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='orquestador' AIRFLOW_CTX_TASK_ID='train_model' AIRFLOW_CTX_EXECUTION_DATE='2025-09-06T22:06:43+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2025-09-06T22:06:43+00:00'
+[2025-09-06T22:06:55.453+0000] {crypto.py:83} WARNING - empty cryptography key - values will not be stored encrypted.
+[2025-09-06T22:06:55.454+0000] {base.py:73} INFO - Using connection ID 'mysql_conn' for task execution.
+[2025-09-06T22:06:55.507+0000] {warnings.py:110} WARNING - /home/***/.local/lib/python3.7/site-packages/sklearn/linear_model/_logistic.py:818: ConvergenceWarning: lbfgs failed to converge (status=1):
+STOP: TOTAL NO. of ITERATIONS REACHED LIMIT.
+
+Increase the number of iterations (max_iter) or scale the data as shown in:
+    https://scikit-learn.org/stable/modules/preprocessing.html
+Please also refer to the documentation for alternative solver options:
+    https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression
+  extra_warning_msg=_LOGISTIC_SOLVER_CONVERGENCE_MSG,
+
+[2025-09-06T22:06:55.511+0000] {python.py:183} INFO - Done. Returned value was: None
+[2025-09-06T22:06:55.537+0000] {taskinstance.py:1373} INFO - Marking task as SUCCESS. dag_id=orquestador, task_id=train_model, execution_date=20250906T220643, start_date=20250906T220655, end_date=20250906T220655
+[2025-09-06T22:06:55.590+0000] {local_task_job_runner.py:232} INFO - Task exited with return code 0
+[2025-09-06T22:06:55.630+0000] {taskinstance.py:2674} INFO - 0 downstream tasks scheduled from follow-on schedule check
