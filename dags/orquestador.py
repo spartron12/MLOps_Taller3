@@ -14,7 +14,7 @@ from funciones import  insert_data, read_data, train_model, start_fastapi_server
 from scripts.queries import DROP_PENGUINS_TABLE, CREATE_PENGUINS_TABLE_RAW, CREATE_PENGUINS_TABLE_CLEAN, DROP_PENGUINS_CLEAN_TABLE
 
 
-MODEL_PATH = "/opt/airflow/models/RegresionLogistica.pkl"
+MODEL_PATH = "/opt/airflow/models/DecisionTree.pkl"
 
 with DAG(
     dag_id="orquestador",
